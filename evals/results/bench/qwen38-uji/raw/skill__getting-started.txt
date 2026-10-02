@@ -1,0 +1,5 @@
+Pasang sqlpipe dengan satu perintah di terminal Anda. Jalankan `curl -sSL https://get.sqlpipe.dev | sh`. Skrip ini mengunduh biner lalu menaruhnya di PATH sistem. Pastikan perintah `sqlpipe --version` menampilkan nomor versi tanpa galat. Jika perintah tidak ditemukan, tutup terminal lalu buka lagi agar PATH terisi ulang.
+
+Buat berkas konfigurasi bernama sqlpipe.yaml di direktori kerja Anda. Konfigurasi adalah berkas teks yang mendefinisikan koneksi dan perilaku alat. Di dalamnya, tulis alamat host, kredensial, serta nama basis data untuk sumber dan tujuan. Anda bisa mulai dari contoh minimal yang tersedia di dokumentasi. Simpan berkas setelah Anda mengisi semua isian wajib.
+
+Jalankan eksekusi pertama dengan perintah `sqlpipe run --config sqlpipe.yaml`. Perintah ini membaca konfigurasi dari berkas yang Anda buat pada langkah sebelumnya. Jika keluaran menampilkan baris ringkasan tanpa galat, sqlpipe siap dipakai untuk memindahkan data Anda. Jika muncul galat koneksi, baca pesan di baris terakhir keluaran untuk mengetahui host atau kredensial yang salah.

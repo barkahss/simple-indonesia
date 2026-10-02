@@ -1,0 +1,36 @@
+## Mulai cepat
+
+**1. Pasang sqlpipe**
+
+Jalankan perintah berikut di terminal Anda untuk mengunduh dan memasang sqlpipe secara otomatis:
+
+```bash
+curl -sSL https://get.sqlpipe.dev | sh
+```
+
+Skrip akan mendeteksi sistem operasi Anda, mengambil binari yang sesuai, lalu menempatkannya di direktori yang sudah ada di `$PATH`.
+
+**2. Siapkan konfigurasi**
+
+Buat berkas `sqlpipe.yaml` di direktori proyek Anda. Tentukan sumber data, tujuan, serta opsi pipeline sesuai kebutuhan. Contoh minimal:
+
+```yaml
+source:
+  type: postgres
+  dsn: "postgres://user:pass@localhost:5432/mydb"
+target:
+  type: bigquery
+  project: my-project
+```
+
+**3. Jalankan pipeline pertama**
+
+Eksekusi perintah berikut untuk memulai proses:
+
+```bash
+sqlpipe run --config sqlpipe.yaml
+```
+
+Jika konfigurasi valid, sqlpipe akan membaca data dari sumber, mentransformasi sesuai aturan yang Anda definisikan, lalu menulis hasilnya ke tujuan. Status kemajuan ditampilkan langsung di terminal.
+
+Selesai—pipeline Anda kini aktif dan siap dikembangkan lebih lanjut.

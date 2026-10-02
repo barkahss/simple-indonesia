@@ -7,6 +7,8 @@ venv/
 # Rahasia: kunci API tidak boleh masuk repo. Set via env, mis. $env:LLM_API_KEY
 .env
 .env.*
+# Konfigurasi bench lokal (base_url/model/api_key mesin sendiri, tidak ikut commit)
+evals/.bench.local.json
 
 # OS
 Thumbs.db

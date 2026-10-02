@@ -1,0 +1,5 @@
+```
+sqlpipe: unggahan S3 gagal.
+AWS mengembalikan AccessDenied karena kredensial IAM tidak memiliki izin s3:PutObject pada bucket tujuan.
+Tambahkan izin s3:PutObject ke kebijakan IAM untuk role atau user yang sqlpipe pakai, lalu jalankan ulang perintah.
+```

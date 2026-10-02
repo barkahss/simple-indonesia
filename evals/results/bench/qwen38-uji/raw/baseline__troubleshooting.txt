@@ -1,0 +1,7 @@
+**Pemecahan Masalah**
+
+**Batas waktu koneksi ke Postgres**
+Jika sqlpipe gagal terhubung ke Postgres dengan galat `connection timed out`, periksa hal berikut: pastikan host, port (default 5432), dan nama basis data pada variabel lingkungan `SQLPIPE_PG_DSN` sudah benar. Verifikasi bahwa security group atau firewall mengizinkan lalu lintas masuk dari IP sumber sqlpipe. Tambahkan parameter `connect_timeout=10` pada string koneksi agar sqlpipe tidak menunggu tanpa batas. Jika menggunakan VPC peering, pastikan route table dan DNS resolution aktif.
+
+**Galat izin S3**
+Untuk galat `AccessDenied` saat sqlpipe membaca atau menulis ke bucket S3, pastikan IAM role atau access key yang digunakan memiliki kebijakan `s3:GetObject`, `s3:PutObject`, dan `s3:ListBucket` pada resource ARN bucket terkait. Jika bucket dienkripsi dengan SSE-KMS, tambahkan izin `kms:Decrypt`. Pastikan juga nama bucket pada konfigurasi `SQLPIPE_S3_BUCKET` tidak mengandung spasi atau karakter tidak valid, serta region endpoint sesuai lokasi bucket.

@@ -1,0 +1,7 @@
+sqlpipe v2.0
+
+Perubahan pecah (perubahan yang merusak kompatibilitas versi lama): field `name` pada endpoint /v2/users pecah menjadi dua field terpisah, yaitu `first_name` dan `last_name`. Anda memperbarui kode klien agar membaca dua field baru tersebut sebelum memutakhirkan ke v2.0. Permintaan yang masih merujuk `name` akan mengembalikan galat.
+
+Flag baru `--incremental` membuat proses muat hanya membaca baris yang bertambah sejak eksekusi terakhir. Anda menambahkan flag ini ke perintah sqlpipe untuk mengaktifkan perilaku tersebut. Tanpa flag ini, sqlpipe membaca ulang seluruh sumber data pada setiap eksekusi.
+
+Penulisan berkas Parquet berjalan 40 persen lebih cepat dibanding v1.x. Perbaikan ini berlaku untuk semua operasi ekspor tanpa konfigurasi tambahan. Anda tidak perlu mengubah perintah yang ada untuk mendapat kecepatan baru ini.

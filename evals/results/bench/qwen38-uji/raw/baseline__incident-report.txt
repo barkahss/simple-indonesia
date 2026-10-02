@@ -1,0 +1,13 @@
+**Insiden: Peningkatan Error HTTP 502 pada API**
+
+**Waktu:** 14:02 – 14:31 UTC
+
+**Dampak:** Sekitar 12% permintaan API mengembalikan respons HTTP 502 (Bad Gateway).
+
+**Penyebab:** Deployment yang dilakukan pada 14:02 UTC secara tidak sengaja menghapus langkah pemanasan cache (cache warming), sehingga backend menerima lonjakan permintaan tanpa cache yang siap dan sejumlah node gagal merespons.
+
+**Resolusi:** Deployment dibatalkan (rollback) pada 14:27 UTC. Setelah rollback selesai dan cache kembali terisi, seluruh lalu lintas API pulih sepenuhnya pada 14:31 UTC.
+
+**Tindak lanjut:** Langkah pemanasan cache kini diwajibkan dalam pipeline CI/CD dan akan divalidasi secara otomatis sebelum setiap rilis produksi.
+
+Kami mohon maaf atas ketidaknyamanan ini.

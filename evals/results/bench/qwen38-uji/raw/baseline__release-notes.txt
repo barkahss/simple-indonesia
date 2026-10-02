@@ -1,0 +1,13 @@
+**sqlpipe v2.0**
+
+**Perubahan Merusak (Breaking Change)**
+Field `name` pada endpoint `/v2/users` telah dipecah menjadi dua field terpisah: `first_name` dan `last_name`. Seluruh klien yang mengonsumsi endpoint ini wajib memperbarui pemetaan field sebelum melakukan upgrade. Permintaan lama yang masih merujuk `name` akan mengembalikan error 422.
+
+**Fitur Baru**
+Ditambahkan flag `--incremental` yang memungkinkan sqlpipe memproses hanya baris data yang berubah sejak eksekusi terakhir. Flag ini sangat berguna untuk dataset besar karena memangkas waktu sinkronisasi secara signifikan.
+
+**Peningkatan Kinerja**
+Penulisan file Parquet kini 40% lebih cepat berkat optimasi buffer dan kompresi internal.
+
+**Catatan Upgrade**
+Pastikan seluruh pipeline dan skrip downstream telah disesuaikan dengan skema baru `/v2/users` sebelum beralih ke v2.0.

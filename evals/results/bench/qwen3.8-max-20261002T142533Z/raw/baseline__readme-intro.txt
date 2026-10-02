@@ -1,0 +1,3 @@
+**sqlpipe** adalah alat CLI ringan yang menyinkronkan tabel PostgreSQL ke Amazon S3 dalam format Parquet. Cukup tentukan koneksi database, pilih tabel atau kueri, lalu sqlpipe akan mengekstrak data, mengubahnya menjadi berkas Parquet terpartisi, dan mengunggahnya langsung ke bucket tujuan—tanpa perlu pipeline ETL tambahan.
+
+Dirancang untuk otomatisasi dan integrasi CI/CD, sqlpipe mendukung penjadwalan berbasis cron, penulisan inkremental berdasarkan kolom timestamp, serta kompresi Snappy atau Zstandard. Dengan satu perintah tunggal, data operasional Anda siap dikonsumsi oleh Athena, Spark, atau Redshift Spectrum tanpa langkah perantara.
