@@ -26,13 +26,17 @@ simple-indonesia/
     scenarios.json            # 8 skenario uji Bahasa Indonesia
     slop_id.tsv               # leksikon bau AI Indonesia
     check_examples.py         # pastikan Sesudah lebih bersih dari Sebelum
+    run_eval.py               # hitung ulang angka ke results/RESULTS.md
     fixtures/                 # bukti uji (asli vs bersih)
+    results/RESULTS.md        # ringkasan angka terukur
   prompts/
     system-prompt.md          # versi ringkas + ~60 token untuk harness tanpa SKILL.md
   output-styles/
     simple-indonesia.md       # gaya output untuk Claude Code
   src/hooks/
     lint_hook.py              # hook nasihat PostToolUse dan Stop
+    simple-indonesia-activate.js  # hook SessionStart, muat blok aturan
+  .claude-plugin/             # marketplace + plugin Claude Code
 ```
 
 ## Pasang
@@ -43,11 +47,19 @@ Agen apa pun dengan skills CLI, dari root repo ini:
 npx skills add ./
 ```
 
-Atau dari GitHub (ganti `USER`):
+Atau dari GitHub:
 
 ```sh
-npx skills add USER/simple-indonesia
+npx skills add barkahss/simple-indonesia
 ```
+
+Claude Code (plugin):
+
+```sh
+claude plugin marketplace add barkahss/simple-indonesia && claude plugin install simple-indonesia@simple-indonesia
+```
+
+Gaya output saja: pilih `simple-indonesia:simple-indonesia` di `/config` Output style (nama pendek tidak resolve).
 
 Opencode / Cursor / VS Code Copilot / Codex / Gemini CLI:
 salin folder repo ini ke folder skills agen Anda. Skill ikut standar `agentskills.io/specification`: folder + `SKILL.md` dengan frontmatter `name` dan `description` (`name` cocok dengan nama folder).
@@ -61,7 +73,9 @@ Lalu minta: "tulis ulang ini dengan simple-indonesia" atau "jelaskan dengan baha
 ```sh
 python evals/id_lint.py --self-test
 python src/hooks/test_lint_hook.py
+node --test src/hooks/simple-indonesia-activate.test.js
 python evals/check_examples.py
+python evals/run_eval.py --check   # tulis ulang evals/results/RESULTS.md + gate
 ```
 
 ## Dua mode

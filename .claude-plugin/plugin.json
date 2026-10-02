@@ -1,0 +1,57 @@
+{
+  "name": "simple-indonesia",
+  "displayName": "Simple Indonesia",
+  "description": "Tulis Bahasa Indonesia yang polos dan mudah dibaca dengan disiplin ASD-STE100: kalimat pendek, satu kata satu makna, kalimat aktif, syarat sebelum perintah, istilah didefinisikan saat pertama dipakai.",
+  "version": "1.2.0",
+  "author": {
+    "name": "barkahss"
+  },
+  "homepage": "https://github.com/barkahss/simple-indonesia",
+  "repository": "https://github.com/barkahss/simple-indonesia",
+  "license": "MIT",
+  "keywords": [
+    "technical-writing",
+    "documentation",
+    "bahasa-indonesia",
+    "ste",
+    "asd-ste100"
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/src/hooks/simple-indonesia-activate.js\"",
+            "timeout": 5,
+            "statusMessage": "Memuat Simple Indonesia..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/src/hooks/lint_hook.py\"",
+            "timeout": 10,
+            "statusMessage": "Simple Indonesia: memeriksa berkas..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/src/hooks/lint_hook.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

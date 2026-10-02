@@ -5,11 +5,11 @@ description: |
 license: MIT
 compatibility: claude-code cursor codex gemini-cli opencode
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   standard: ASD-STE100 Issue 9 (2025-01-15) adaptasi Bahasa Indonesia + EYD V + KBBI
   based-on: AminBlg/SimpleEnglish v2.1.1 (MIT)
   karpathy-mode: "80% jalan ke ASD-STE100 sebagai baku"
-  lint: "python evals/id_lint.py --self-test && python evals/check_examples.py"
+  lint: "python evals/id_lint.py --self-test && python evals/run_eval.py --check"
 ---
 
 # Bahasa Indonesia Sederhana
@@ -114,7 +114,9 @@ Aturan ini untuk fakta dan instruksi, bukan salinan pemasaran atau tulisan merek
 - `evals/scenarios.json`: 8 skenario uji Bahasa Indonesia (README, mulai cepat, troubleshooting, pesan galat, insiden, rilis, runbook, arsitektur).
 - `evals/slop_id.tsv`: leksikon bau AI Indonesia yang diukur lint.
 - `evals/check_examples.py`: memastikan bagian Sesudah lebih bersih dari Sebelum.
-- `evals/fixtures/screenshot1-reply.txt`, `screenshot2-reply.txt`: bukti uji. Skor awal 14 dan 4 pelanggaran plus 1 opener. Versi bersih ada di `evals/fixtures/screenshot1-bersih.txt`, `screenshot2-bersih.txt` dengan 0 pelanggaran.
+- `evals/fixtures/screenshot1-reply.txt`, `screenshot2-reply.txt`: bukti uji. Skor awal 14 dan 4 pelanggaran plus 1 opener. Versi bersih ada di `evals/fixtures/screenshot1-bersih.txt`, `screenshot2-bersih.txt` dengan 0 pelanggaran. Ringkasan terukur di `evals/results/RESULTS.md`, dihitung ulang oleh `evals/run_eval.py`.
 - `prompts/system-prompt.md`: versi ringkas untuk harness tanpa SKILL.md plus versi ~60 token.
 - `output-styles/simple-indonesia.md`: gaya output untuk Claude Code (`keep-coding-instructions: true`).
 - `src/hooks/lint_hook.py`: hook nasihat PostToolUse dan Stop. Uji dengan `python src/hooks/test_lint_hook.py`.
+- `src/hooks/simple-indonesia-activate.js`: hook SessionStart, memuat blok aturan ke konteks. Uji dengan `node --test src/hooks/simple-indonesia-activate.test.js`.
+- `.claude-plugin/`: marketplace dan plugin untuk Claude Code (`claude plugin install simple-indonesia@simple-indonesia`).

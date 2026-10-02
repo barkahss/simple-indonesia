@@ -1,5 +1,11 @@
 # Changelog — simple-indonesia
 
+## v1.2.0
+
+- Plugin Claude Code: `.claude-plugin/marketplace.json` + `plugin.json` (SessionStart, PostToolUse, Stop).
+- Hook aktivasi `src/hooks/simple-indonesia-activate.js` + uji Node (`node --test`), port dari SimpleEnglish dengan penyesuaian Windows.
+- Eval runner `evals/run_eval.py`: hitung ulang angka dari berkas mentah ke `evals/results/RESULTS.md` dengan gate (screenshot 14 dan 4 pelanggaran menjadi 0, contoh 12 menjadi 4).
+
 ## v1.1.0
 
 - Port `ste_lint.py` SimpleEnglish menjadi `evals/id_lint.py` untuk Bahasa Indonesia + EYD V: modal terlarang, `telah/sudah`, singkatan informal, klausa menggantung, `english_bare`, `comma_overload`, `paragraph_overload`, opener/closer balasan.

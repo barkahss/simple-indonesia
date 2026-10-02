@@ -1,0 +1,24 @@
+{
+  "name": "simple-indonesia",
+  "owner": {
+    "name": "barkahss",
+    "url": "https://github.com/barkahss"
+  },
+  "description": "Skill Bahasa Indonesia sederhana ala ASD-STE100 untuk tulisan teknis yang jelas.",
+  "plugins": [
+    {
+      "name": "simple-indonesia",
+      "source": "./",
+      "displayName": "Simple Indonesia",
+      "description": "Tulis Bahasa Indonesia yang polos dan mudah dibaca dengan disiplin ASD-STE100: kalimat pendek, satu kata satu makna, kalimat aktif, syarat sebelum perintah, istilah didefinisikan saat pertama dipakai.",
+      "version": "1.2.0",
+      "author": {
+        "name": "barkahss"
+      },
+      "homepage": "https://github.com/barkahss/simple-indonesia",
+      "repository": "https://github.com/barkahss/simple-indonesia",
+      "license": "MIT",
+      "keywords": ["technical-writing", "documentation", "bahasa-indonesia", "ste", "asd-ste100"]
+    }
+  ]
+}
