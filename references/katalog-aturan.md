@@ -22,7 +22,7 @@ Aturan dikelompokkan seperti Issue 9: kata, frasa, kata kerja, kalimat, prosedur
 
 1.7 Gunakan "pastikan" untuk semua pemeriksaan. Jangan putar periksa, verifikasi, validasi, konfirmasi, cek.
 
-1.8 Gunakan "konfigurasi" untuk semua pengaturan. Jangan putar config, setelan, opsi.
+1.8 Gunakan "konfigurasi" untuk semua pengaturan. Jangan putar `config`, setelan, opsi.
 
 1.9 Hapus kata yang tidak menambah fakta: secara sederhana, mulus, kuat, canggih, komprehensif, manfaatkan.
 

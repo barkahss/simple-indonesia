@@ -11,43 +11,251 @@ Prinsip dipinjam dari kamus STE: satu kata, satu makna, satu kelas kata. Untuk B
 3. Bila ragu, pilih bentuk KBBI daring terbaru. Catat pilihan Anda di awal dokumen bila perlu.
 4. Katakan sekali bahwa tidak ada alat yang menjamin kepatuhan.
 
-## Daftar baku vs tidak baku (pilihan umum)
+## Daftar baku vs tidak baku (terverifikasi silang)
 
-Baku -> hindari:
+Baku -> hindari. Disusun dari silang dua daftar besar (Ruangguru 655 dan
+Deepublish 302, diakses Okt 2026). Hanya pasangan yang disetujui kedua
+sumber yang masuk, kecuali inti umum yang pasti menurut KBBI. Baris yang
+meragukan (beda makna seperti sangsi/sanksi, varian cakapan seperti
+capek/kenapa/dulu, ejaan Inggris seperti import/client) DIBUANG, bukan
+ditebak. KBBI Daring memblokir bot sehingga cek otomatis tidak mungkin;
+KBBI Daring tetap wasit akhir — bila ragu, cek manual di sana.
 
-- apotek -> apotik
-- teknik -> tehnik
-- sistem -> sistim
-- jadwal -> jadual
-- risiko -> resiko
-- survei -> survey
-- analisis -> analisa (sebagai kata benda)
-- frekuensi -> frekwensi
-- konsekuensi -> konsekwensi
-- kualitas -> kwalitas
-- objek -> obyek
-- praktik (kata benda) / praktis (kata sifat) -> praktek
+- aktif -> aktip
 - aktivitas -> aktifitas
-- izin -> ijin
-- paham -> faham
-- napas -> nafas
-- standar (baku) -> standard
-- metode -> metoda
-- nasihat -> nasehat
-- cederai? -> gunakan bentuk KBBI: cedera (bukan cidera)
-- sekadar -> sekedar
-- terlanjur -> telanjur
+- adhesi -> adesi
+- advokat -> adpokat
+- afdal -> afdol
+- akhirat -> akherat
+- aksesori -> aksesoris
+- alarm -> alaram
+- ambulans -> ambulan
+- ambeien -> ambeyen
+- analisis -> analisa (sebagai kata benda; bentuk kerja: menganalisis)
+- andal -> handal
 - antre -> antri
-- limfa? abaikan — contoh: pilih satu dan konsisten.
+- apotek -> apotik
+- asas -> azas
+- asasi -> azasi
+- atlet -> atlit
+- atmosfer -> atmosfir
+- autentik -> otentik
+- azan -> adzan
+- balig -> baligh
+- balsam -> balsem
+- banderol -> bandrol
+- batalion -> batalyon
+- baterai -> batere, baterei
+- berpikir -> berfikir
+- bertanggung jawab -> bertanggungjawab
+- blender -> belender
+- boks -> bok
+- bolpoin -> bolpen
+- bumper -> bemper
+- bus -> bis
+- cabai -> cabe
+- cecak -> cicak
+- cedera -> cidera
+- cendekia -> cendikia
+- cendekiawan -> cendikiawan
+- cengkerama -> cengkrama
+- cengkih -> cengkeh
+- cokelat -> coklat
+- darmasiswa -> darma siswa
+- darmawisata -> darma wisata
+- debitur -> debitor
+- derajat -> derajad
+- detail -> detil
+- detergen -> deterjen
+- diagnosis -> diagnosa
+- doping -> dopping
+- efektif -> efektip
+- efektivitas -> efektifitas
+- eksplisit -> explisit
+- ekspor -> eksport
+- ekstrem -> ekstrim
+- elite -> elit
+- embus -> hembus
+- esai -> esei
+- februari -> pebruari
+- film -> filem
+- filsuf -> filosof
+- fondasi -> pondasi
+- fotosintesis -> fotosintesa
+- frekuensi -> frekwensi
+- gubuk -> gubug
+- gua -> goa
+- guncang -> goncang
+- hadis -> hadist
+- hafal -> hapal
+- hakikat -> hakekat
+- hektare -> hektar
+- hierarki -> hirarki
+- higienis -> higenis
+- hipotesis -> hipotesa
+- ijazah -> ijasah
+- ikhlas -> iklas, ihlas
+- imbau -> himbau
+- impor -> import (kata kunci kode dikecualikan bila di backtick)
+- indra -> indera
+- insaf -> insyaf
+- interogasi -> interograsi
+- istigfar -> istighfar
+- istri -> isteri
+- jagat -> jagad
+- jahiliah -> jahiliyah
+- jadwal -> jadual
+- jemaah -> jamaah
+- jenazah -> jenasah
+- jenderal -> jendral
+- jeriken -> jerigen
+- kaidah -> kaedah
+- kanker -> kangker
+- kantong -> kantung
+- karena -> karna
+- karier -> karir
+- karisma -> kharisma
+- karnaval -> karnafal
+- kategori -> katagori
+- kaus -> kaos
+- kedaluwarsa -> kadaluarsa, kadaluwarsa
+- kemarin -> kemaren
+- khatam -> katam, hatam
+- khawatir -> kuatir
+- khotbah -> khutbah
+- kiai -> kyai
+- kompleks -> komplek
+- komplet -> komplit
+- konferensi -> konperensi
+- kongres -> konggres
+- konsekuensi -> konsekwensi
+- koordinasi -> koordinir
+- korsleting -> konsleting
+- kosakata -> kosa kata (bentuk baku satu kata; hindari yang dipisah)
+- kreativitas -> kreatifitas
+- kualifikasi -> kwalifikasi
+- kualitas -> kwalitas
+- kuantitas -> kwantitas
+- kuesioner -> kuisioner
+- kuitansi -> kwitansi
+- kuota -> kwota
+- lafal -> lapal, rapal
+- laskar -> lasykar
+- lemari -> almari
+- lembap -> lembab
+- linear -> linier
+- lubang -> lobang
+- mag -> maag
+- magrib -> maghrib
+- makhluk -> mahluk
+- malapraktik -> malpraktek
+- mampat -> mampet
+- manajemen -> managemen
+- mangkuk -> mangkok
+- manuskrip -> manuskrif
+- masjid -> mesjid
+- mazhab -> madzab
+- memerhatikan -> memperhatikan
+- merek -> merk
+- meterai -> materai
+- metode -> metoda
+- miliar -> milyar
+- modern -> moderen
+- mulia -> mulya
+- museum -> musium
+- nakhoda -> nahkoda, nakoda, nangkoda
+- nanas -> nenas
+- napas -> nafas
+- narasumber -> nara sumber
+- nasihat -> nasehat
+- negeri -> negri
+- neto -> netto
+- nomor -> nomer
+- notula -> notulen
+- november -> nopember
+- objek -> obyek
+- objektif -> obyektif
+- ojek -> ojeg
+- olahraga -> olah raga
+- omzet -> omset
+- organisasi -> organisir
+- orisinal -> orisinil
+- otomatis -> automatis
+- paham -> faham
+- palem -> palm
+- pamflet -> pamfelet, famplet
+- paramedis -> paramedik
+- pascapanen -> pasca panen
+- paspor -> pasport
+- pedepokan -> padepokan
+- peduli -> perduli
+- pelesir -> plesir
+- peleton -> pleton
+- pelihara -> peliara
+- pembaruan -> pembaharuan
+- penasihat -> penasehat
+- perajin -> pengrajin
+- peranti -> piranti
+- perkedel -> pergedel
+- permukiman -> pemikiman
+- persentase -> presentase, prosentase
+- persepsi -> presepsi
+- perusak -> pengrusak
+- pikir -> fikir
+- prancis -> perancis
+- produktif -> produktip
+- produktivitas -> produktifitas
+- praktik -> praktek (kata benda; kata sifat: praktis)
+- provinsi -> propinsi
+- proyek -> projek
+- putra -> putera
+- putri -> puteri
+- rapi -> rapih
+- rapor -> raport
+- respons -> respon
+- rezeki -> rejeki
+- rezim -> resim
+- risiko -> resiko
+- sahih -> sohih
+- sastra -> sastera
+- saus -> saos
+- sekadar -> sekedar
+- sekretaris -> sekertaris
+- seprai -> sprei
+- setrika -> seterika
+- sintesis -> sintesa
+- sistem -> sistim
+- sopir -> supir
+- standar -> standard (ejaan Inggris; di dokumen Indonesia pakai standar)
+- subjek -> subyek
+- survei -> survey
+- teknik -> tehnik
+- teladan -> tauladan
+- telepon -> telpon
+- tenteram -> tentram
+- terlanjur -> telanjur
+- tobat -> taubat
+- triliun -> triliyun
+- tripleks -> triplek
+- trofi -> tropi
+- umrah -> umroh
+- unta -> onta
+- urine -> urin
+- ustaz -> ustadz
+- utang -> hutang
+- varietas -> varietes, varitas
+- yudikatif -> judikatif
+- zaman -> jaman
+- zamrud -> jamrud
 
 Untuk istilah teknologi serapan, pilih satu dan konsisten:
 
 - konfigurasi (bukan konfig, config)
-- basis data (bukan database bila dokumen Indonesia penuh; bila produk memakai "database", tetapkan sebagai nama teknis dan konsisten)
-- kata sandi (bukan password bila dokumen Indonesia; bila UI menulis "password", perlakukan sebagai nama teknis)
+- basis data — pilih satu; bila produk memakai database, tetapkan database sebagai nama teknis dan konsisten
+- kata sandi — pilih satu; bila UI menulis password, perlakukan password sebagai nama teknis
 - surel (untuk email formal) / email (bila produk memakai itu — tetapkan sekali)
-- daring (bukan online bila dokumen formal) / dalam jaringan — pilih satu
-- luring (bukan offline) — pilih satu
+- daring / dalam jaringan — pilih satu (dokumen formal: daring)
+- luring / luar jaringan — pilih satu sesuai audiens (padanan offline)
 - tetikus (formal) vs mouse (teknis) — pilih satu sesuai audiens
 - papan tik vs keyboard — pilih satu
 - peramban vs browser — pilih satu

@@ -1,5 +1,11 @@
 # Changelog — simple-indonesia
 
+## v1.5.0
+
+- Riset ulang kamus: `references/kata-baku.md` dari 24 menjadi 238 entri terverifikasi silang (Ruangguru 655 x Deepublish 302, Okt 2026). Baris meragukan dibuang: beda makna, varian cakapan, ejaan Inggris, arah tak pasti. KBBI Daring wasit akhir (blokir bot, cek manual).
+- `ekstrak.py` dukung frasa hindari (`nara sumber`, `olah raga`); `kamus_lint.py` cocok frasa + buang frontmatter YAML. Nol false-positive di seluruh korpus bersih repo.
+- Betulkan `telanjur->terlanjur`, `cedera->cidera`, `praktik->praktek`; hapus baris noise; selaraskan `luring/offline` menjadi panduan audiens (tidak di-lint).
+
 ## v1.4.0
 
 - Tool kamus `tools/kamus/`: `ekstrak.py` membangun `kata-baku.tsv` dari `references/kata-baku.md` (tulisan sendiri, bukan isi KBBI), `kamus_lint.py` melint pilihan kata plus akhiran melekat (-nya/-ku/-mu/-lah/-kah), keduanya dengan `--self-test`. Berkas TSV generated/lokal tidak ikut commit, mirror `tools/ste-dictionary` SimpleEnglish.

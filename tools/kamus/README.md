@@ -5,6 +5,16 @@ konten KBBI**. KBBI adalah hak Badan Bahasa. Repo hanya ship tool; daftar
 dibuat dari berkas milik repo ini atau daftar yang Anda tulis sendiri dari
 kata yang Anda cek di KBBI Daring.
 
+## Metodologi daftar (Okt 2026)
+
+`references/kata-baku.md` disusun dari silang dua daftar besar (Ruangguru
+655 dan Deepublish 302). Hanya pasangan yang disetujui kedua sumber yang
+masuk, kecuali inti umum yang pasti menurut KBBI. Baris meragukan DIBUANG:
+beda makna (sangsi/sanksi, aberasi/abrasi), varian cakapan (capek, kenapa,
+dulu), ejaan Inggris (import, client), dan arah tunggal tak pasti
+(genius/jenius, cenderamata). KBBI Daring memblokir bot sehingga cek
+otomatis tidak mungkin; KBBI Daring tetap wasit akhir bila ragu.
+
 ## Buat daftar
 
 1. Jalankan ekstraktor atas `references/kata-baku.md` (tulisan repo ini):

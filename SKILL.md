@@ -5,7 +5,7 @@ description: |
 license: MIT
 compatibility: claude-code cursor codex gemini-cli opencode
 metadata:
-  version: "1.4.0"
+  version: "1.5.0"
   standard: ASD-STE100 Issue 9 (2025-01-15) adaptasi Bahasa Indonesia + EYD V + KBBI
   based-on: AminBlg/SimpleEnglish v2.1.1 (MIT)
   karpathy-mode: "80% jalan ke ASD-STE100 sebagai baku"
@@ -38,7 +38,7 @@ Saat diminta menulis atau menulis ulang dokumentasi, terapkan aturan ini ke pros
 
 7. Tanpa titik koma dan tanpa em-dash. Tulis dua kalimat, atau sebutkan hubungannya dengan karena, tetapi, contohnya.
 
-8. Satu kata, satu makna, untuk seluruh dokumen. Gunakan `pastikan` untuk periksa, verifikasi, konfirmasi, validasi, cek. Gunakan `konfigurasi` untuk config, pengaturan, setelan, opsi. Gunakan `gunakan` untuk pakai, manfaatkan. Pecah rantai frasa benda lebih dari tiga kata dengan preposisi ("nilai batas waktu untuk kolam koneksi"). Daftar lengkap di `references/kata-ganti.md` dan baku di `references/kata-baku.md`.
+8. Satu kata, satu makna, untuk seluruh dokumen. Gunakan `pastikan` untuk periksa, verifikasi, konfirmasi, validasi, cek. Gunakan `konfigurasi` untuk `config`, pengaturan, setelan, opsi. Gunakan `gunakan` untuk pakai, manfaatkan. Pecah rantai frasa benda lebih dari tiga kata dengan preposisi ("nilai batas waktu untuk kolam koneksi"). Daftar lengkap di `references/kata-ganti.md` dan baku di `references/kata-baku.md`.
 
 9. Beri pembaca setiap istilah dan setiap fakta sebelum langkah yang membutuhkannya. Definisikan istilah konsep saat pertama dipakai, di bawah sepuluh kata, satu per kalimat. Jangan definisikan nama produk, nama standar (Postgres, S3, HTTP), atau alat yang dibahas dokumen. Sebutkan juga host, flag, atau langkah sebelumnya yang dipakai perintah. "Restart service" menjadi "Mulai ulang layanan `sync` pada host yang menjalankan tugas."
 

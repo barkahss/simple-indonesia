@@ -37,7 +37,8 @@ def pecah_varian(s):
 
 def ekstrak(teks):
     """Kembalikan daftar (hindari, baku). Dukung dua pola kata-baku.md:
-    '- baku -> hindari' dan '- baku (bukan a, b)'.
+    '- baku -> hindari' dan '- baku (bukan a, b)'. Sisi hindari boleh frasa
+    ('nara sumber'); sisi baku boleh frasa ('bertanggung jawab').
     """
     rows = []
     for baris in teks.splitlines():
@@ -48,17 +49,17 @@ def ekstrak(teks):
         if "->" in isi:
             kiri, kanan = isi.split("->", 1)
             baku = bersih(re.sub(r"\([^)]*\)", "", kiri)).lower()
-            if not baku or " " in baku:
+            if not baku:
                 continue
             for v in pecah_varian(kanan):
-                if v and v != baku and " " not in v:
+                if v and v != baku:
                     rows.append((v, baku))
         else:
             m = re.match(r"^(\S+)\s+\(bukan\s+([^)]+)\)", isi)
             if m:
                 baku = m.group(1).lower()
                 for v in pecah_varian(m.group(2)):
-                    if v and v != baku and " " not in v:
+                    if v and v != baku:
                         rows.append((v, baku))
     # Deterministik: unik + urut.
     return sorted(set(rows))
@@ -71,6 +72,7 @@ def self_test():
 - praktik (kata benda) / praktis (kata sifat) -> praktek
 - konfigurasi (bukan konfig, config)
 - antre -> antri
+- narasumber -> nara sumber
 - kalimat tanpa panah dilewati
 """
     rows = ekstrak(teks)
@@ -80,6 +82,7 @@ def self_test():
     assert ("konfig", "konfigurasi") in rows, rows
     assert ("config", "konfigurasi") in rows, rows
     assert ("antri", "antre") in rows, rows
+    assert ("nara sumber", "narasumber") in rows, rows  # frasa hindari didukung
     assert rows == sorted(set(rows)), "tidak deterministik"
     print(f"ekstrak self-test OK: {len(rows)} baris fixture")
 

@@ -46,7 +46,18 @@ def badan(kata):
     return k
 
 
+def pola(hindari):
+    """Regex whole-word untuk satu kata atau frasa ('nara sumber')."""
+    bagian = r"\s+".join(re.escape(p) for p in hindari.split())
+    return re.compile(r"(?<!\w)" + bagian + r"(?!\w)", re.I)
+
+
+def buang_frontmatter(teks):
+    return re.sub(r"\A---\r?\n[\s\S]*?\r?\n---\r?\n?", "", teks, count=1)
+
+
 def lint_teks(teks, pairs):
+    teks = buang_frontmatter(teks)
     try:
         import id_lint
 
@@ -54,9 +65,17 @@ def lint_teks(teks, pairs):
     except Exception:  # noqa: BLE001 — tetap jalan tanpa id_lint
         body = re.sub(r"```.*?```", " ", teks, flags=re.S)
         body = re.sub(r"`[^`\n]+`", " ", body)
-    peta = {h: b for h, b in pairs}
+    disusun = []
+    for h, b in pairs:
+        if " " in h:
+            disusun.append((pola(h), h, b, True))
+    tunggal = [(h, b) for h, b in pairs if " " not in h]
+    peta = {h: b for h, b in tunggal}
     hits = []
     for i, baris in enumerate(body.splitlines(), start=1):
+        for rx, h, b, _ in disusun:
+            for m in rx.finditer(baris):
+                hits.append({"baris": i, "kata": m.group(0), "ganti": b})
         for m in re.finditer(r"[A-Za-z]+(?:'[A-Za-z]+)?", baris):
             w = m.group(0)
             base = badan(w)
@@ -66,14 +85,20 @@ def lint_teks(teks, pairs):
 
 
 def self_test():
-    pairs = [("apotik", "apotek"), ("jadual", "jadwal"), ("resiko", "risiko")]
-    t = "Beli obat di apotik dan cek jadual. Resikonya besar.\n`apotik` dalam kode dilewati.\n"
+    pairs = [
+        ("apotik", "apotek"),
+        ("jadual", "jadwal"),
+        ("resiko", "risiko"),
+        ("nara sumber", "narasumber"),
+    ]
+    t = "Beli obat di apotik dan cek jadual. Resikonya besar.\n`apotik` dalam kode dilewati.\nHubungi nara sumber untuk konfirmasi.\n"
     hits = lint_teks(t, pairs)
     got = [(h["kata"].lower(), h["ganti"]) for h in hits]
     assert ("apotik", "apotek") in got, got
     assert ("jadual", "jadwal") in got, got
     assert ("resikonya", "risiko") in got, got  # akhiran -nya ikut tertangkap
-    assert len(hits) == 3, got  # yang dalam backtick tidak dihitung
+    assert ("nara sumber", "narasumber") in got, got  # frasa ikut tertangkap
+    assert len(hits) == 4, got  # yang dalam backtick tidak dihitung
     assert lint_teks("Sudah sesuai KBBI.", pairs) == []
     print("kamus_lint self-test OK")
 
