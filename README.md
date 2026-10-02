@@ -97,7 +97,7 @@ python tools/kamus/kamus_lint.py --self-test
 
 ## Sumber
 
-- Saran Karpathy soal ASD-STE100 untuk output LLM — cuitan "We'll be spending a lot more time trying to understand the outputs of language models" (@karpathy, https://x.com/karpathy).
+- Saran Karpathy soal ASD-STE100 untuk output LLM — cuitan "We'll be spending a lot more time trying to understand the outputs of language models" (@karpathy, [https://x.com/karpathy](https://x.com/karpathy/status/2105819303471976479)).
 - Acuan struktur (Inggris): AminBlg/SimpleEnglish — https://github.com/AminBlg/SimpleEnglish.
 - Standar ASD-STE100 Issue 9 (53 aturan, ~900 kata), unduhan resmi gratis — https://www.asd-ste100.org.
 - Spesifikasi Agent Skills (Anthropic, standar terbuka) — https://agentskills.io/specification.
