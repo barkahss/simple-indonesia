@@ -1,0 +1,42 @@
+[
+  {
+    "id": "readme-intro",
+    "type": "descriptive",
+    "prompt": "Tulis bagian pembuka README (satu atau dua paragraf, sekitar 120 kata) untuk alat CLI bernama sqlpipe yang menyinkronkan tabel Postgres ke S3 sebagai berkas Parquet. Kembalikan hanya teksnya."
+  },
+  {
+    "id": "getting-started",
+    "type": "procedural",
+    "prompt": "Tulis bagian 'Mulai cepat' untuk alat CLI sqlpipe: pasang dengan `curl -sSL https://get.sqlpipe.dev | sh`, atur sqlpipe.yaml, jalan pertama dengan `sqlpipe run --config sqlpipe.yaml`. Sekitar 150 kata. Kembalikan hanya teksnya."
+  },
+  {
+    "id": "troubleshooting",
+    "type": "procedural",
+    "prompt": "Tulis bagian pemecahan masalah untuk sqlpipe: batas waktu koneksi ke Postgres dan galat izin S3. Sekitar 150 kata. Kembalikan hanya teksnya."
+  },
+  {
+    "id": "error-message",
+    "type": "procedural",
+    "prompt": "Tulis teks pesan galat persis yang dicetak sqlpipe bila unggahan S3 gagal dengan AccessDenied karena kredensial IAM kurang s3:PutObject. Dua sampai empat baris. Kembalikan hanya teks pesan."
+  },
+  {
+    "id": "incident-report",
+    "type": "descriptive",
+    "prompt": "Tulis laporan insiden status-page publik: antara 14:02 dan 14:31 UTC, 12% permintaan API gagal dengan HTTP 502 setelah deploy menghapus langkah pemanasan cache; deploy dibatalkan pada 14:27. Sekitar 100 kata. Kembalikan hanya teksnya."
+  },
+  {
+    "id": "release-notes",
+    "type": "descriptive",
+    "prompt": "Tulis catatan rilis sqlpipe v2.0: field `name` dari /v2/users pecah menjadi `first_name` dan `last_name` (breaking), flag baru `--incremental`, dan tulis Parquet 40% lebih cepat. Sekitar 120 kata. Kembalikan hanya teksnya."
+  },
+  {
+    "id": "runbook-terse",
+    "type": "procedural",
+    "prompt": "Tulis ulang langkah runbook ini sependek mungkin: 'Pastikan cadangan ada sebelum menjalankan migrasi.' Kembalikan hanya langkahnya."
+  },
+  {
+    "id": "architecture",
+    "type": "descriptive",
+    "prompt": "Tulis gambaran arsitektur (sekitar 130 kata) sqlpipe: proses pembaca mengalirkan baris Postgres per batch, konverter mengubah batch menjadi grup baris Parquet, pengunggah menulis objek multipart ke S3 dengan coba ulang. Kembalikan hanya teksnya."
+  }
+]

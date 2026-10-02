@@ -1,0 +1,5 @@
+Scraper selesai dan berjalan. Scraper ada di `C:\AAA-PROXY-YAML\scraper-berita\`. Sekali jalan mengambil berita dari 13 portal dalam sekitar dua menit. Hasil tersimpan di `data/terbaru.json` dan `data/berita.ndjson`. Jalankan `npm start` dari folder itu kapan saja.
+
+Tiga portal masih gagal. `Kompas` menolak cangkang tanpa jendela. `Tribunnews` dan `Medcom` merender daftar penuh dengan `JavaScript`. Bila Anda mau mengejarnya, ketiganya butuh pendekatan berbeda.
+
+Pilih satu langkah berikut. Tambah jadwal otomatis agar scraper jalan tiap jam. Simpan hasil ke basis data `SQLite` agar bisa dicari. Perbaiki tiga portal yang gagal. Tambah portal baru.

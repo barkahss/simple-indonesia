@@ -1,0 +1,14 @@
+Selesai. Semua langkah sudah dijalankan: riset tercatat, struktur proyek dibuat, scraper jalan, dan hasil tertangkap di C:\AAA-PROXY-YAML\scraper-berita\.
+
+Chromium teringan 2026 adalah chrome-headless-shell, build Chromium minimal yang hanya bisa berjalan tanpa jendela. Sejak Chromium M132, shell ini berdiri sendiri sebagai binary terpisah dan ini satu-satunya jalur headless resmi. Playwright memasangnya terpisah dengan perintah npx playwright install --only-shell, unduhannya hanya 59.8 MiB dibanding Chromium penuh yang ratus MiB. Sumber riset ada di docs/riset.md, antara lain playwright.dev/docs/browsers dan chromium.googlesource.com.
+
+Arsitekturnya memakai Node.js 24, playwright, dan cheerio, metode unofficial tanpa API resmi. src/config/portals.js mendefinisikan 16 portal dengan pola URL artikel. src/browser/pool.js menjalankan headless shell dengan blokir gambar, font, CSS, dan media agar ringan, plus retry dua kali. src/extractors/daftar.js menyaring tautan artikel dari halaman depan berdasarkan pola URL, tahan terhadap perubahan kelas CSS. src/extractors/artikel.js mengambil judul, waktu, penulis, dan isi dari meta Open Graph, JSON-LD, lalu paragraf dengan fallback berjenjang. src/extractors/rss.js menjadi jalur cadangan bila halaman daftar kosong. src/index.js menjalankan maksimal empat portal bersamaan.
+
+Hasil eksekusi terakhir: 13 portal berhasil dalam 123 detik, detikNews, Antara, Liputan6, JPNN, Suara, Sindonews, Okezone, Viva, IDN Times, Republika, dan Merdeka lewat jalur HTML. Tempo dan CNN Indonesia lewat jalur RSS karena halaman daftarnya dirender JavaScript. Total 33 artikel lengkap dengan isi dan 77 judul tambahan tertangkap di data/terbaru.json dan data/berita.ndjson.
+
+Tiga portal masih gagal. Kompas menolak navigasi dari headless shell sampai batas waktu habis. Tribunnews dan Medcom merender daftar artikel penuh dengan JavaScript dan RSS keduanya mati. Ketiganya butuh pendekatan berbeda, misalnya API internal tidak resmi atau proxy residensial.
+
+Jalankan ulang kapan saja dengan perintah:
+
+cd scraper-berita
+npm start

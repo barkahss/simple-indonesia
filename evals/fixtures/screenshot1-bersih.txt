@@ -1,0 +1,15 @@
+Scraper selesai. 13 portal berhasil dalam 123 detik. Hasil tersimpan di `data/terbaru.json` dan `data/berita.ndjson`.
+
+Riset tercatat di `docs/riset.md`. Sumber utama adalah `playwright.dev/docs/browsers` dan `chromium.googlesource.com`. `chrome-headless-shell` (cangkang Chrome tanpa jendela) adalah jalur resmi tanpa jendela sejak `Chromium M132`. `Playwright` memasangnya lewat `npx playwright install --only-shell`. Unduhan hanya 59,8 MiB. Ukuran ini jauh lebih kecil dari Chrome penuh.
+
+Arsitektur memakai `Node.js 24`, `Playwright`, dan `Cheerio` tanpa `API` resmi. `src/config/portals.js` (daftar portal) mendefinisikan 16 portal dengan pola `URL` artikel. `src/browser/pool.js` (pengelola browser) menjalankan cangkang tanpa jendela. Ia memblokir gambar, font, `CSS`, dan media agar ringan. Bila gagal, ia mengulang tiap tugas dua kali.
+
+`src/extractors/daftar.js` (penyaring daftar) menyaring tautan artikel dari halaman depan berdasar pola `URL`. Cara ini tahan terhadap perubahan kelas `CSS`. `src/extractors/artikel.js` (pengambil artikel) mengambil judul dan waktu. Ia juga mengambil penulis dan isi.
+
+Sumbernya adalah `Open Graph` dan `JSON-LD`. Lalu ia memakai paragraf dengan cara cadangan berjenjang. Bila halaman daftar kosong, `src/extractors/rss.js` (jalur cadangan) menjadi cadangan. `src/index.js` (pengatur jalan) menjalankan maksimal empat portal bersamaan.
+
+Bila halaman daftar memakai `JavaScript` penuh, pakai jalur `RSS`. `Tempo` dan `CNN Indonesia` lewat jalur `RSS`. Sebelas portal lain lewat jalur `HTML`. Total 33 artikel lengkap dengan isi. Ada 77 judul tambahan.
+
+Tiga portal masih gagal. `Kompas` menolak navigasi dari cangkang tanpa jendela sampai batas waktu habis. `Tribunnews` dan `Medcom` merender daftar penuh dengan `JavaScript`. `RSS` keduanya mati. Ketiganya butuh pendekatan berbeda, contohnya `API` internal tidak resmi atau proksi residensial.
+
+Jalankan ulang kapan saja dengan perintah berikut. Buka folder `scraper-berita`. Jalankan `npm start`.

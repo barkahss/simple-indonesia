@@ -1,0 +1,31 @@
+# slop_id.tsv — leksikon bau AI Bahasa Indonesia
+# format: istilah \t hitung \t ganti
+# Diukur oleh id_lint.py bersama SLOP_CORE. Tambahkan istilah bila 8+ daftar ban menyebutnya.
+memanfaatkan	0	gunakan
+leverage	0	gunakan
+utilisasi	0	gunakan
+tangguh	0	(hapus, atau beri ukuran)
+canggih	0	(hapus, atau beri ukuran)
+komprehensif	0	(hapus)
+mulus	0	(hapus)
+seamless	0	(hapus)
+robust	0	(hapus)
+penting untuk dicatat	0	(hapus)
+perlu dicatat	0	(hapus)
+dalam rangka untuk	0	untuk
+tidak hanya	0	nyatakan Y saja
+melainkan	0	nyatakan Y saja
+holistik	0	utuh
+sinergi	0	(hapus)
+revolusioner	0	baru
+transformatif	0	(hapus, katakan yang berubah)
+memfasilitasi	0	bantu
+merampingkan	0	buat lebih sederhana
+mendalami	0	baca, periksa
+menyelami	0	baca, periksa
+secara sederhana	0	(hapus)
+dengan mudah	0	(hapus)
+sangat penting	0	penting
+krusial	0	penting
+melakukan implementasi	0	terapkan
+melakukan verifikasi	0	pastikan

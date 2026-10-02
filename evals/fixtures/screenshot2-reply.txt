@@ -1,0 +1,5 @@
+Proyeknya sudah jadi dan berjalan. Posisi sekarang: scraper ada di C:\AAA-PROXY-YAML\scraper-berita\, sekali eksekusi mengambil berita dari 13 portal dalam sekitar dua menit, dan hasilnya tersimpan di data/terbaru.json serta data/berita.ndjson. Anda tinggal menjalankan npm start dari folder itu kapan saja.
+
+Tiga portal masih gagal karena Kompas menolak headless shell, sedangkan Tribunnews dan Medcom merender daftar beritanya penuh dengan JavaScript. Keduanya butuh pendekatan berbeda bila Anda mau mengejarnya.
+
+Langkah wajar berikutnya ada beberapa arah. Saya bisa menambahkan jadwal otomatis supaya scraper jalan sendiri tiap jam, menyimpan hasil ke basis data SQLite agar bisa dicari, memperbaiki tiga portal yang gagal, atau menambah portal baru. Anda mau yang mana?
