@@ -1,0 +1,42 @@
+# Deadlock di Basis Data
+
+## Pengertian
+
+**Deadlock** adalah kondisi di mana dua (atau lebih) transaksi saling menunggu satu sama lain untuk melepaskan *lock* (kunci) pada sumber daya yang mereka butuhkan. Akibatnya, tidak ada transaksi yang bisa melanjutkan proses — semuanya "macet" secara melingkar (*circular wait*).
+
+---
+
+## Contoh Sederhana
+
+Misalkan ada dua transaksi yang berjalan bersamaan:
+
+| Waktu | Transaksi A | Transaksi B |
+|-------|-------------|-------------|
+| T1 | `LOCK` baris **X** | `LOCK` baris **Y** |
+| T2 | Ingin `LOCK` baris **Y** → **menunggu B** | Ingin `LOCK` baris **X** → **menunggu A** |
+
+- A memegang kunci X dan butuh Y.
+- B memegang kunci Y dan butuh X.
+
+Keduanya saling menunggu tanpa akhir → **deadlock**.
+
+---
+
+## Satu Cara Mencegah: *Consistent Lock Ordering*
+
+**Prinsip:** Semua transaksi harus mengunci sumber daya dalam **urutan yang sama dan konsisten**.
+
+Misalnya, tetapkan aturan: *"Selalu kunci baris berdasarkan ID ascending."*
+
+Dengan aturan ini:
+
+- Transaksi A mengunci X dulu, lalu Y.
+- Transaksi B **juga harus** mengunci X dulu, baru Y.
+
+Karena B tidak bisa mengunci X (masih dipegang A), B akan menunggu di titik yang sama, sehingga siklus tunggu tidak pernah terbentuk. Deadlock pun terhindari.
+
+---
+
+## Catatan Tambahan
+
+Selain pencegahan di atas, banyak DBMS (MySQL/InnoDB, PostgreSQL, SQL Server) sudah memiliki **deadlock detector** yang secara otomatis mendeteksi siklus tunggu dan memilih salah satu transaksi sebagai *victim* untuk di-*rollback*, sehingga transaksi lain bisa melanjutkan. Namun, menerapkan urutan penguncian yang konsisten tetap menjadi praktik terbaik untuk meminimalkan kemungkinan deadlock sejak awal.

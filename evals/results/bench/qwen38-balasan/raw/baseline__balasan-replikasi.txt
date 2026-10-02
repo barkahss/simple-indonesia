@@ -1,0 +1,61 @@
+# Replikasi Sinkron vs Asinkron
+
+## Replikasi Sinkron (Synchronous)
+
+Pada replikasi sinkron, **transaksi dianggap selesai hanya setelah data berhasil ditulis ke replika**. Alurnya:
+
+1. Aplikasi mengirim *write* ke primary.
+2. Primary menunggu replika mengonfirmasi penerimaan data.
+3. Baru setelah itu primary mengembalikan respons "sukses" ke aplikasi.
+
+**Karakteristik:**
+- **Konsistensi kuat** – replika selalu sama dengan primary.
+- **Latensi lebih tinggi** – aplikasi harus menunggu konfirmasi dari replika (terutama jika beda region).
+- **Risiko data loss ≈ 0** untuk transaksi yang sudah ter-kommit.
+- **Ketersediaan bisa turun** – jika replika lambat/down, primary ikut terhambat.
+
+## Replikasi Asinkron (Asynchronous)
+
+Pada replikasi asinkron, **primary langsung mengembalikan respons ke aplikasi tanpa menunggu replika**. Data dikirim ke replika di latar belakang.
+
+**Karakteristik:**
+- **Latensi rendah** – aplikasi tidak terbebani waktu jaringan ke replika.
+- **Ketersediaan tinggi** – replika down tidak mengganggu primary.
+- **Ada risiko data loss** – jika primary crash sebelum data terkirim, sebagian transaksi terakhir bisa hilang.
+- **Replikation lag** – replika bisa sedikit tertinggal.
+
+## Perbandingan Singkat
+
+| Aspek | Sinkron | Asinkron |
+|---|---|---|
+| Latensi write | Lebih tinggi | Lebih rendah |
+| Risiko kehilangan data | Sangat kecil | Ada (jendela kecil) |
+| Ketersediaan saat replika down | Bisa terganggu | Tetap jalan |
+| Konsistensi | Kuat | Eventual |
+| Cocok lintas region? | Kurang ideal (latensi tinggi) | Lebih cocok |
+
+## Kapan Memilih yang Mana?
+
+### Pilih **Sinkron** jika:
+- **Kehilangan data tidak bisa ditoleransi**, misalnya transaksi perbankan, pembayaran, atau sistem keuangan.
+- Anda butuh **read-after-write consistency** (data yang baru ditulis langsung terbaca di replika).
+- Jarak antar node relatif dekat (misalnya dalam satu data center / availability zone) sehingga latensi tambahan masih wajar.
+- Contoh: PostgreSQL dengan `synchronous_commit = on`, MySQL semi-sync replication, SQL Server Always On synchronous mode.
+
+### Pilih **Asinkron** jika:
+- **Performa dan ketersediaan lebih penting** daripada jaminan zero data loss, misalnya logging, analytics, cache, atau media sosial.
+- Replika berada di **region/negara berbeda** (cross-region) di mana latensi jaringan terlalu besar untuk sinkron.
+- Anda bisa menerima **replikation lag** beberapa milidetik hingga detik.
+- Contoh: replica baca untuk reporting, disaster recovery standby, CDN edge caching.
+
+### Jalan Tengah: **Semi-Synchronous**
+Beberapa sistem (misalnya MySQL semi-sync, PostgreSQL `synchronous_commit = remote_apply` vs `remote_write`) menawarkan kompromi: primary menunggu **satu** replika mengonfirmasi, tapi tidak semua. Ini menyeimbangkan keamanan data dan latensi.
+
+## Ringkasan Praktis
+
+> **Sinkron** → "Saya tidak boleh kehilangan satu byte pun."
+> **Asinkron** → "Saya butuh cepat dan selalu tersedia; sedikit lag bisa diterima."
+
+Dalam praktik, banyak arsitektur menggunakan **sinkron untuk replica terdekat** (dalam satu AZ) dan **asinkron untuk replica jarak jauh** (cross-region DR), sehingga mendapat keseimbangan antara keamanan data dan performa.
+
+Ada konteks spesifik (misalnya database tertentu atau skenario arsitektur) yang ingin Anda bahas lebih lanjut?

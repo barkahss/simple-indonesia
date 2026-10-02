@@ -1,0 +1,5 @@
+{
+  "model": "qwen3.8-max",
+  "prompt_tokens": 2260,
+  "completion_tokens": 10835
+}

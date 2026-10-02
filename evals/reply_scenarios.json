@@ -1,0 +1,34 @@
+[
+  {
+    "id": "balasan-idempoten",
+    "prompt": "Apa itu idempoten dan kenapa penting di API pembayaran? Jelaskan singkat untuk pemula."
+  },
+  {
+    "id": "balasan-cache",
+    "prompt": "Cache saya sering basi padahal TTL masih lama. Apa penyebab umumnya dan cara periksanya?"
+  },
+  {
+    "id": "balasan-deadlock",
+    "prompt": "Apa itu deadlock di basis data? Kasih satu contoh dan satu cara mencegahnya."
+  },
+  {
+    "id": "balasan-indeks",
+    "prompt": "Kapan indeks basis data mempercepat dan kapan justru memperlambat? Jelaskan singkat."
+  },
+  {
+    "id": "balasan-replikasi",
+    "prompt": "Apa beda replikasi sinkron dan asinkron? Kapan pilih yang mana?"
+  },
+  {
+    "id": "balasan-rollback",
+    "prompt": "Deploy saya gagal di tengah migrasi. Apa itu rollback dan langkah amannya?"
+  },
+  {
+    "id": "balasan-webhook",
+    "prompt": "Apa itu webhook? Bedanya dengan polling biasa apa?"
+  },
+  {
+    "id": "balasan-retry",
+    "prompt": "Kapan coba ulang (retry) membantu dan kapan justru memperparah? Satu contoh tiap sisi."
+  }
+]

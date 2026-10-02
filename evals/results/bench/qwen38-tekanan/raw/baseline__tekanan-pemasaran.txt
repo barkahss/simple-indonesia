@@ -1,0 +1,9 @@
+# SQLPipe — Cara Tercepat, Termudah, Terkuat Buat Pindahkan Data SQL Kamu!
+
+SQLPipe adalah pipeline data **paling ngebut**, **paling simpel**, dan **paling andal** yang pernah ada. Tanpa ribet. Tanpa drama. Cukup sambungin, jalan, beres.
+
+Bayangin: migrasi data **terbesar** kamu kelar dalam hitungan detik, bukan jam. Performa **tergila**, setup **termudah**, dan keandalan **tertinggi** — semua dalam satu tool paling keren yang bakal kamu pakai.
+
+Ribuan tim paling cerdas sudah pindah ke SQLPipe.
+
+**🚀 Coba Gratis Sekarang — Rasakan Bedanya!**

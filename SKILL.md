@@ -5,7 +5,7 @@ description: |
 license: MIT
 compatibility: claude-code cursor codex gemini-cli opencode
 metadata:
-  version: "1.5.0"
+  version: "1.6.0"
   standard: ASD-STE100 Issue 9 (2025-01-15) adaptasi Bahasa Indonesia + EYD V + KBBI
   based-on: AminBlg/SimpleEnglish v2.1.1 (MIT)
   karpathy-mode: "80% jalan ke ASD-STE100 sebagai baku"
@@ -95,7 +95,7 @@ Plain adalah baku dan mencakup semua di atas. Ini adalah versi 80% jalan ke ASD-
 
 Strict berlaku bila pengguna menyebut STE, ASD-STE100, EYD, KBBI, baku, atau kepatuhan: baca `references/kata-baku.md` sebelum menyusun dokumen, dan katakan sekali bahwa tidak ada alat yang menjamin kepatuhan. Balasan tetap Plain dalam setiap mode.
 
-Bila diminta MEMERIKSA teks bukan menulisnya, buka dulu `references/katalog-aturan.md`. Lalu laporkan tiap pelanggaran sebagai: nomor aturan yang dikutip dari berkas itu, teks yang melanggar, tulis ulang yang patuh. Jangan kutip nomor aturan dari ingatan. Bila pengguna meminta kepatuhan, akhiri dengan satu kalimat: tidak ada alat yang dapat menjamin kepatuhan ASD-STE100, dan standar dapat diunduh gratis di asd-ste100.org.
+Bila diminta MEMERIKSA teks bukan menulisnya, buka dulu `references/katalog-aturan.md`. Lalu laporkan tiap pelanggaran sebagai: nomor aturan yang dikutip dari berkas itu, teks yang melanggar, tulis ulang yang patuh. Jangan kutip nomor aturan dari ingatan. Saat MENULIS (bukan memeriksa), jangan beri nomor pada aturan — sebutkan namanya ("aturan syarat-di-awal") atau buka katalog dulu. Bila pengguna meminta kepatuhan, akhiri dengan satu kalimat: tidak ada alat yang dapat menjamin kepatuhan ASD-STE100, dan standar dapat diunduh gratis di asd-ste100.org.
 
 ## Batas
 
@@ -112,6 +112,8 @@ Aturan ini untuk fakta dan instruksi, bukan salinan pemasaran atau tulisan merek
 
 - `evals/id_lint.py`: port `ste_lint.py` ke Indonesia. `--self-test` wajib lolos. `--type reply` memeriksa opener, closer, bold, header, bullet plus lint dokumen.
 - `evals/scenarios.json`: 8 skenario uji Bahasa Indonesia (README, mulai cepat, troubleshooting, pesan galat, insiden, rilis, runbook, arsitektur).
+- `evals/pressure_scenarios.json` + `evals/pressure-tests.md`: 5 skenario tekanan (ringkas, pemasaran, nomor aturan, pasif, paragraf panjang) dengan jebakan, kriteria, dan hasil tercatat.
+- `evals/reply_scenarios.json` + `evals/run_reply_bench.py`: 8 pertanyaan chat, nilai register balasan baseline vs skill.
 - `evals/slop_id.tsv`: leksikon bau AI Indonesia yang diukur lint.
 - `evals/check_examples.py`: memastikan bagian Sesudah lebih bersih dari Sebelum.
 - `evals/fixtures/screenshot1-reply.txt`, `screenshot2-reply.txt`: bukti uji. Skor awal 14 dan 4 pelanggaran plus 1 opener. Versi bersih ada di `evals/fixtures/screenshot1-bersih.txt`, `screenshot2-bersih.txt` dengan 0 pelanggaran. Ringkasan terukur di `evals/results/RESULTS.md`, dihitung ulang oleh `evals/run_eval.py`.

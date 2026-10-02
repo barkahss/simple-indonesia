@@ -1,0 +1,55 @@
+# Idempoten di API Pembayaran
+
+## Apa itu Idempoten?
+
+**Idempoten** artinya: *melakukan operasi yang sama berkali-kali hasilnya tetap sama seperti dilakukan sekali.*
+
+Analogi sederhana:
+
+- **Idempoten:** Menekan tombol lift lantai 5 berulang kali → lift tetap ke lantai 5. Tidak ke lantai 10, 15, dst.
+- **Tidak idempoten:** Menekan tombol "kirim SMS" berulang kali → SMS terkirim berkali-kali.
+
+Di API, biasanya diwujudkan lewat **Idempotency Key** — sebuah ID unik (misal UUID) yang dikirim klien di header request.
+
+```
+POST /payments
+Idempotency-Key: a1b2c3d4-...
+Body: { "amount": 50000, "to": "merchant_123" }
+```
+
+Server menyimpan key itu. Jika request dengan key yang sama datang lagi, server **tidak memproses ulang**, cukup mengembalikan hasil yang sudah tersimpan.
+
+---
+
+## Kenapa Penting di API Pembayaran?
+
+Bayangkan skenario ini:
+
+1. Anda klik **"Bayar Rp50.000"**.
+2. Request terkirim ke server, pembayaran berhasil diproses.
+3. Tapi **responsnya hilang** karena jaringan putus / timeout.
+4. Aplikasi Anda mengira gagal → otomatis **retry** request yang sama.
+5. Tanpa idempoten → pengguna **terkena charge dua kali**. 💸
+
+Dengan idempotency key:
+
+- Server mengenali key yang sama di request kedua.
+- Server menjawab: *"Transaksi ini sudah diproses, ini hasilnya."*
+- **Tidak ada duplikasi pembayaran.**
+
+---
+
+## Ringkasan untuk Diingat
+
+| Aspek | Penjelasan |
+|---|---|
+| **Masalah** | Retry akibat jaringan tidak stabil bisa memicu transaksi ganda |
+| **Solusi** | Kirim `Idempotency-Key` unik per transaksi |
+| **Perilaku server** | Key baru → proses. Key sudah ada → kembalikan hasil lama |
+| **Manfaat** | Aman dari double-charge, aman untuk retry, pengalaman pengguna terjaga |
+
+---
+
+> **Prinsipnya:** Di dunia pembayaran, lebih baik *mencegah duplikasi* daripada *mengurus refund*. Idempotency key adalah "asuransi" termurah untuk itu.
+
+Semoga jelas! Kalau mau, saya bisa lanjutkan ke contoh implementasi di kode. 🙂

@@ -1,0 +1,63 @@
+# Cache "Basi" Padahal TTL Masih Lama
+
+## Penyebab Umum
+
+### 1. Eviction karena Kapasitas Penuh
+Ini penyebab paling sering. Ketika memori Redis/Memcached penuh, engine akan **menghapus key sebelum TTL-nya habis** berdasarkan kebijakan evict (LRU, LFU, random, dll).
+
+### 2. Invalidasi Terlalu Agresif
+- Deploy baru memicu `FLUSHDB` / `FLUSHALL`.
+- Logic aplikasi memanggil `DEL` / `invalidate()` di tempat yang tidak perlu (misal setiap *write* menghapus seluruh prefix).
+- Event-driven invalidation (webhook, message queue) mengirim sinyal hapus berlebihan.
+
+### 3. Cache Backend Restart / Failover
+- Redis restart, OOM-kill, atau failover ke replica yang belum sempat sync penuh.
+- Memcached murni in-memory → restart = semua data hilang.
+
+### 4. Key Collision / Overwrite
+Dua alur kode menulis ke key yang sama dengan nilai berbeda, sehingga salah satu "menimpa" sebelum TTL habis.
+
+### 5. Clock Skew
+Jika TTL dihitung berbasis timestamp aplikasi (bukan `EXPIRE` di sisi server), perbedaan jam antar-node bisa membuat key dianggap sudah expired.
+
+### 6. Race Condition & Thundering Herd
+Banyak request concurrent saat key belum terisi → beberapa di antaranya menulis nilai *stale* atau kosong ke cache sebelum data final masuk.
+
+### 7. Network Timeout / Partial Read
+Client menganggap cache miss karena timeout singkat, lalu menulis ulang dengan data lama.
+
+### 8. Serialisasi / Deserialization Gagal
+Data corrupt di cache → library menganggapnya tidak valid dan mengembalikan *miss*, padahal key masih ada.
+
+---
+
+## Cara Memeriksa
+
+| Langkah | Perintah / Aksi |
+|---|---|
+| **Cek eviction** | Redis: `INFO stats` → lihat `evicted_keys`. Memcached: `stats` → `evictions`. |
+| **Cek memori** | `INFO memory` → `used_memory` vs `maxmemory`. Kalau mendekati limit, eviction pasti terjadi. |
+| **Hit/Miss ratio** | `keyspace_hits / (keyspace_hits + keyspace_misses)`. Ratio turun drastis → ada masalah. |
+| **Cek TTL aktual** | `TTL <key>` atau `OBJECT IDLETIME <key>`. Bandingkan dengan TTL yang di-set aplikasi. |
+| **Review kebijakan evict** | `CONFIG GET maxmemory-policy`. Pastikan bukan `allkeys-lru` kalau Anda ingin TTL dihormati. |
+| **Audit invalidasi** | Grep kode untuk `DEL`, `FLUSH`, `invalidate`, `cache.clear`. Cek apakah dipanggil terlalu sering. |
+| **Pantau restart/failover** | Cek log Redis (`/var/log/redis/...`) atau orchestrator (Sentinel/Cluster log) untuk event restart. |
+| **Tracing request** | Gunakan OpenTelemetry / APM untuk melihat apakah *cache miss* diikuti write-back dengan data lama. |
+| **Slowlog & latency** | `SLOWLOG GET 20` di Redis. Latency tinggi bisa memicu timeout → dianggap miss. |
+| **Cek clock sync** | `chronyc tracking` / `ntpq -p` di semua node. |
+
+---
+
+## Quick Fix yang Biasanya Efektif
+
+1. **Naikkan `maxmemory`** atau tambah node agar eviction berkurang.
+2. Ganti policy ke `volatile-lru` (hanya evict key yang punya TTL) alih-alih `allkeys-lru`.
+3. Gunakan **`SET key val EX <ttl>`** atomik, bukan `SET` + `EXPIRE` terpisah.
+4. Terapkan **stale-while-revalidate**: simpan dua TTL (soft & hard), sajikan data lama sambil refresh di background.
+5. Tambahkan **mutex / single-flight** saat rebuild cache untuk mencegah thundering herd.
+6. Hindari `FLUSHALL` saat deploy; gunakan **versioned key** (`v2:user:123`) agar key lama tinggal expire alami.
+7. Aktifkan **persistence** (RDB/AOF) di Redis kalau downtime singkat tidak boleh menghilangkan cache.
+
+---
+
+Kalau mau, ceritakan stack Anda (Redis/Memcached/CDN, bahasa, framework) dan gejala spesifiknya—saya bisa bantu persempit diagnosisnya lebih lanjut.

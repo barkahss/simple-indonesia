@@ -1,0 +1,22 @@
+## Indeks Basis Data: Kapan Mempercepat & Memperlambat
+
+### ✅ Mempercepat (operasi baca / *read*)
+
+- **Pencarian spesifik** (`WHERE`, `=`): mesin tidak perlu *full table scan*, cukup telusuri struktur B-tree/hash.
+- **JOIN** pada kolom berindeks: pencocokan baris antar-tabel jadi jauh lebih cepat.
+- **Pengurutan & pengelompokan** (`ORDER BY`, `GROUP BY`): data sudah tersusun di indeks, sehingga sort tambahan bisa dihindari.
+- **Range query** (`BETWEEN`, `<`, `>`): indeks B-tree memungkinkan traversal berurutan.
+
+### ❌ Memperlambat (operasi tulis / *write*)
+
+- **INSERT**: setiap baris baru harus ditambahkan juga ke semua indeks terkait.
+- **UPDATE** pada kolom berindeks: indeks lama harus dihapus dan entri baru ditulis.
+- **DELETE**: entri di indeks ikut dihapus.
+- **Terlalu banyak indeks** pada satu tabel: biaya pemeliharaan kumulatif membuat operasi tulis makin lambat.
+- **Kolom kardinalitas sangat rendah** (misal boolean, status 2–3 nilai): optimizer sering tetap memilih *full scan*, sehingga indeks hanya menambah overhead tanpa manfaat.
+
+### Ringkasan Satu Kalimat
+
+> Indeks adalah **trade-off ruang & tulis untuk kecepatan baca**: sangat menguntungkan pada tabel yang dominan di-*query*, tetapi menjadi beban pada tabel yang dominan di-*write* (misal log atau tabel transaksi ber-volume tinggi).
+
+Aturan praktis: indeks kolom yang sering muncul di `WHERE`, `JOIN`, dan `ORDER BY`; hindari mengindeks kolom yang jarang difilter atau yang terus-menerus di-*update*.

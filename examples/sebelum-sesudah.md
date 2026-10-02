@@ -8,7 +8,7 @@ Sebelum:
 Sesudah:
 > sqlpipe menyalin tabel Postgres ke S3. sqlpipe membutuhkan satu berkas konfigurasi. Sebelum Anda mulai, pastikan kredensial AWS benar. Jika tidak benar, S3 menolak unggahan dengan galat izin.
 
-Mengapa lebih baik: tanpa "memanfaatkan", "tangguh", "dengan mudah", tanpa em-dash, syarat sebelum perintah, satu fakta per kalimat.
+Mengapa lebih baik: tanpa kata pengisi dan tanpa em-dash. Syarat di awal. Satu fakta per kalimat.
 
 ## 2. Runbook
 

@@ -1,0 +1,17 @@
+## Hasil Tulis Ulang
+
+"Dengan memakai sistem yang kuat, pengguna bisa menyamakan data dengan mudah. Pastikan semua sudah diatur dengan benar."
+
+---
+
+## Daftar Aturan yang Dipakai
+
+| No. | Aturan |
+|-----|--------|
+| 1 | **Mengganti kata serapan/teknis** dengan padanan yang lebih umum: *arsitektur* → *sistem*, *dikonfigurasi* → *diatur*. |
+| 2 | **Menyederhanakan kata kerja formal**: *memanfaatkan* → *memakai*, *menyinkronkan* → *menyamakan*. |
+| 3 | **Mengganti kata penghubung/keterangan yang kaku**: *dapat dengan mudah* → *bisa … dengan mudah* (lebih alami dalam percakapan sehari-hari). |
+| 4 | **Membuang imbuhan berlebihan**: *semuanya sudah dikonfigurasi* → *semua sudah diatur* (lebih ringkas tanpa mengubah makna). |
+| 5 | **Mempertahankan makna dan urutan informasi** agar pesan asli tidak berubah, hanya cara penyampaiannya yang dibuat lebih ringan. |
+
+Semoga membantu! Jika ingin versi yang lebih santai atau lebih formal lagi, silakan beri tahu. 😊

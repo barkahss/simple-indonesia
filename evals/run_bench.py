@@ -154,15 +154,16 @@ def main():
     ap.add_argument("--model", default=None)
     ap.add_argument("--offset", type=int, default=0, help="lewati N skenario pertama")
     ap.add_argument(
+        "--scenarios", default="evals/scenarios.json", help="berkas skenario JSON"
+    )
+    ap.add_argument(
         "--outdir",
         default=None,
         help="pakai folder hasil tetap (untuk lanjutkan bench yang terputus)",
     )
     args = ap.parse_args()
 
-    scenarios = json.loads(
-        (ROOT / "evals" / "scenarios.json").read_text(encoding="utf-8")
-    )
+    scenarios = json.loads((ROOT / args.scenarios).read_text(encoding="utf-8"))
     if args.offset:
         scenarios = scenarios[args.offset :]
     if args.max_scenarios:

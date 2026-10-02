@@ -1,5 +1,11 @@
 # Changelog — simple-indonesia
 
+## v1.6.0
+
+- Contoh Sesudah kini 0 pelanggaran (baris meta ditulis ulang tanpa sebut kata slop).
+- Pressure test: `evals/pressure_scenarios.json` (5 jebakan) + `evals/pressure-tests.md` berisi hasil tercatat qwen3.8-max (lint 15 vs 10; 1 lulus, 4 parsial). Temuan skenario-3 melahirkan aturan anti-penomoran di SKILL.md.
+- Bench balasan: `evals/reply_scenarios.json` (8 pertanyaan) + `evals/run_reply_bench.py` (skor format+isi, resume, dry-run). Hasil qwen3.8-max: 349 vs 70 (turun 80%), menang 8/8.
+
 ## v1.5.0
 
 - Riset ulang kamus: `references/kata-baku.md` dari 24 menjadi 238 entri terverifikasi silang (Ruangguru 655 x Deepublish 302, Okt 2026). Baris meragukan dibuang: beda makna, varian cakapan, ejaan Inggris, arah tak pasti. KBBI Daring wasit akhir (blokir bot, cek manual).

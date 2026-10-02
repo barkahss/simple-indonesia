@@ -1,0 +1,27 @@
+Rollback adalah proses mengembalikan sistem ke versi atau keadaan terakhir yang diketahui stabil sebelum perubahan yang gagal diterapkan. Jadi alih-alih meneruskan migrasi yang sudah rusak, Anda mundur ke titik aman terakhir supaya layanan tetap bisa berjalan.
+
+Langkah pertama yang perlu Anda lakukan adalah menghentikan proses deploy yang sedang berjalan agar tidak ada langkah tambahan yang memperparah keadaan. Jika Anda menggunakan alat orkestrasi seperti Kubernetes, perintahnya cukup sederhana:
+
+kubectl rollout undo deployment/nama-aplikasi-anda
+
+Setelah proses berhenti, periksa keadaan saat ini dengan cermat. Catat bagian migrasi mana yang sudah berhasil dijalankan dan bagian mana yang gagal, karena ini menentukan apakah Anda perlu membatalkan perubahan di basis data atau cukup mengembalikan kode aplikasi saja.
+
+Untuk basis data, jika migrasi skema sudah terlanjur diterapkan sebagian, jalankan perintah pembalikan migrasi sesuai kerangka kerja yang Anda pakai. Pada Rails misalnya:
+
+rails db:rollback STEP=1
+
+Pada Django:
+
+python manage.py migrate nama_app nomor_versi_sebelumnya
+
+Pastikan Anda hanya membatalkan langkah yang memang sudah dieksekusi, bukan seluruh riwayat migrasi, agar tidak kehilangan data yang valid.
+
+Berikutnya, kembalikan artefak aplikasi ke versi sebelumnya. Jika Anda memakai Docker, jalankan kontainer dengan tag gambar lama. Jika memakai Git, Anda bisa melakukan:
+
+git revert HEAD
+
+lalu jalankan ulang pipeline deploy untuk versi tersebut.
+
+Setelah sistem kembali ke versi lama, lakukan verifikasi menyeluruh. Jalankan health check, pantau log error selama beberapa menit, dan pastikan endpoint utama merespons dengan benar. Jangan langsung menganggap aman hanya karena aplikasi menyala; kadang ada kerusakan data diam yang baru terlihat saat beban lalu lintas masuk.
+
+Terakhir, komunikasikan kejadian ini ke tim dan catat akar penyebab kegagalan di dokumen post-mortem. Informasi itu penting agar migrasi berikutnya bisa disiapkan dengan strategi yang lebih aman, misalnya menerapkan migrasi bertahap (blue-green deployment, yaitu menjalankan dua versi aplikasi secara paralel lalu mengalihkan lalu lintas hanya setelah versi baru terbukti sehat) sehingga risiko downtime bisa ditekan drastis.

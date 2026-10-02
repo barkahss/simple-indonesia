@@ -1,0 +1,69 @@
+# Rollback: Definisi & Langkah Amannya
+
+## Apa Itu Rollback?
+
+**Rollback** adalah proses mengembalikan sistem (aplikasi, database, konfigurasi, atau infrastruktur) ke kondisi stabil terakhir *sebelum* perubahan/deployment yang bermasalah diterapkan. Tujuannya: meminimalkan downtime dan dampak ke pengguna.
+
+Analoginya: seperti fitur "Undo", tapi untuk deployment produksi.
+
+---
+
+## Kapan Rollback Diperlukan?
+
+- Deployment gagal di tengah jalan (misalnya migrasi DB berhenti separuh).
+- Versi baru menyebabkan error kritis (5xx, data corrupt, performance drop).
+- Health check atau smoke test pasca-deploy gagal.
+
+---
+
+## Langkah Aman Melakukan Rollback
+
+### 1. **Jangan panik – hentikan dulu proses deploy**
+   - Batalkan pipeline CI/CD agar tidak ada step lanjutan yang berjalan.
+   - Bekukan traffic ke instance yang sedang bermasalah (jika memungkinkan).
+
+### 2. **Identifikasi scope kegagalan**
+   - Bagian mana yang sudah ter-apply? (kode, skema DB, konfigurasi, DNS?)
+   - Cek log migrasi, status pod/container, dan monitoring.
+
+### 3. **Putuskan strategi rollback**
+   | Kondisi | Strategi |
+   |---|---|
+   | Hanya kode/config | Redeploy versi sebelumnya (artifact lama) |
+   | Migrasi DB sudah separuh | Jalankan *down migration* / restore snapshot |
+   | Perubahan infra (Terraform, K8s) | `terraform apply` state sebelumnya / `kubectl rollout undo` |
+
+### 4. **Backup SEBELUM rollback**
+   - Snapshot database saat ini (meski rusak) untuk forensik.
+   - Simpan log & konfigurasi yang gagal.
+
+### 5. **Eksekusi rollback secara bertahap**
+   - Mulai dari komponen paling kritis (biasanya database → backend → frontend).
+   - Gunakan mekanisme yang sudah teruji:
+     - **Kubernetes:** `kubectl rollout undo deployment/<nama> --to-revision=<n>`
+     - **Docker/Compose:** `docker compose up -d --force-recreate` dengan image tag lama.
+     - **DB migration (misal Flyway/Liquibase):** `flyway undo` atau restore dump.
+     - **Terraform:** revert commit lalu `terraform apply`.
+
+### 6. **Verifikasi**
+   - Jalankan health check & smoke test.
+   - Pantau error rate, latency, dan log selama 10–30 menit.
+   - Konfirmasi ke tim QA/stakeholder.
+
+### 7. **Komunikasi & dokumentasi**
+   - Informasikan ke tim & user terdampak.
+   - Catat *root cause* dan timeline kejadian untuk post-mortem.
+
+---
+
+## Tips Pencegahan (Agar Rollback Lebih Mudah)
+
+- **Selalu buat migrasi DB yang reversibel** (ada skrip `down`/`undo`).
+- Gunakan **blue-green** atau **canary deployment** supaya rollback tinggal "switch traffic".
+- Simpan artifact versi sebelumnya minimal 1–2 rilis ke belakang.
+- Otomatisasi rollback di pipeline (misal: auto-rollback jika health check gagal dalam X detik).
+- Lakukan **dry-run / staging test** migrasi sebelum ke produksi.
+
+---
+
+Kalau mau, ceritakan stack Anda (misal: Kubernetes + PostgreSQL, Docker + MySQL, dsb.) dan di tahap mana migrasinya gagal — saya bisa bantu langkah yang lebih spesifik. 🛠️

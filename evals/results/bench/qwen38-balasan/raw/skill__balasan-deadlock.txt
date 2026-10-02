@@ -1,0 +1,5 @@
+Deadlock adalah kondisi ketika dua transaksi atau lebih saling menunggu sumber daya yang dipegang satu sama lain sehingga tidak ada yang bisa melanjutkan eksekusi dan semuanya terhenti tanpa batas waktu.
+
+Sebagai contoh, transaksi A mengunci baris 1 pada tabel rekening lalu meminta kunci pada baris 2, sementara pada saat bersamaan transaksi B sudah mengunci baris 2 dan meminta kunci pada baris 1. Karena A menunggu B melepas baris 2 dan B menunggu A melepas baris 1, keduanya terjebak selamanya sampai sistem basis data mendeteksi kebuntuan itu dan membatalkan salah satu transaksi.
+
+Satu cara mencegahnya adalah menerapkan urutan penguncian yang konsisten di seluruh aplikasi. Artinya, setiap transaksi harus mengakses baris atau tabel dalam urutan yang sama, misalnya selalu mulai dari baris bernomor kecil ke besar. Jika semua transaksi mengikuti urutan yang seragam, siklus saling tunggu tidak akan terbentuk karena tidak mungkin satu transaksi memegang kunci di urutan lebih tinggi sambil menunggu kunci di urutan lebih rendah yang dipegang transaksi lain. Dengan menghilangkan kemungkinan siklus, deadlock tidak pernah terjadi.

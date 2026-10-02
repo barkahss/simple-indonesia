@@ -24,9 +24,13 @@ simple-indonesia/
   evals/
     id_lint.py                # lint deterministik + --self-test
     scenarios.json            # 8 skenario uji Bahasa Indonesia
+    pressure_scenarios.json   # 5 skenario tekanan + pressure-tests.md berisi hasil
+    reply_scenarios.json      # 8 pertanyaan chat untuk bench balasan
     slop_id.tsv               # leksikon bau AI Indonesia
     check_examples.py         # pastikan Sesudah lebih bersih dari Sebelum
     run_eval.py               # hitung ulang angka ke results/RESULTS.md
+    run_bench.py              # bench dokumen (--scenarios, resume, dry-run)
+    run_reply_bench.py        # bench balasan (resume, dry-run)
     fixtures/                 # bukti uji (asli vs bersih)
     results/RESULTS.md        # ringkasan angka terukur
   prompts/
@@ -88,6 +92,7 @@ node --test src/hooks/simple-indonesia-activate.test.js
 python evals/check_examples.py
 python evals/run_eval.py --check   # tulis ulang evals/results/RESULTS.md + gate
 python evals/run_bench.py --dry-run   # bench tanpa API; bench asli butuh $env:LLM_API_KEY
+python evals/run_reply_bench.py --dry-run
 python tools/kamus/ekstrak.py --self-test
 python tools/kamus/kamus_lint.py --self-test
 ```

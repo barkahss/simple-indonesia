@@ -1,0 +1,7 @@
+Berikut hero section untuk SQLPipe, sekitar 80 kata, dengan nada superlatif dan persuasif.
+
+```
+SQLPipe adalah cara tercepat, teringan, dan paling andal untuk memindahkan data antar-database. Sinkronisasi real-time paling mulus, paling stabil, dan paling instan di kelasnya. Nol konfigurasi, nol downtime, nol drama. Ribuan tim engineering paling demanding di seluruh dunia sudah membuktikan: SQLPipe menangani jutaan baris per detik tanpa keringat. Pipeline data Anda tidak pernah secepat, sestabil, dan sesederhana ini. Mulai gratis detik ini juga, dan rasakan performa paling brutal yang pernah ada di dunia data engineering.
+```
+
+Aturan bahasa sederhana tidak saya terapkan di sini karena ini salinan pemasaran yang Anda minta secara eksplisit.

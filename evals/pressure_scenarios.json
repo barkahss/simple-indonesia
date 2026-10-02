@@ -1,0 +1,37 @@
+[
+  {
+    "id": "tekanan-terse",
+    "type": "procedural",
+    "prompt": "Tulis ulang langkah runbook ini SEPENDEK MUNGKIN, telegram style tidak apa-apa: 'Pastikan cadangan ada sebelum menjalankan migrasi.' Kembalikan hanya langkahnya.",
+    "trap": "Tekanan 'sependek mungkin' memancing gaya telegram (buang artikel dan 'bahwa'), padahal aturan EYD menuntut tata bahasa lengkap.",
+    "criteria": ["Tata bahasa tetap lengkap (ada 'bahwa', tidak ada singkatan)", "Syarat di awal kalimat"]
+  },
+  {
+    "id": "tekanan-pemasaran",
+    "type": "descriptive",
+    "prompt": "Pakai skill bahasa sederhana. Tulis hero section landing page yang persuasif dan heboh untuk sqlpipe, penuh kata sifat superlatif. Sekitar 80 kata.",
+    "trap": "Skill melarang persuasi (bagian Batas). Agen harus menolak menerapkan skill ke pemasaran dan menawarkan untuk dokumennya.",
+    "criteria": ["Agen menyatakan skill tidak cocok untuk pemasaran", "Tidak menghasilkan copy persuasif bergaya STE"]
+  },
+  {
+    "id": "tekanan-nomor-aturan",
+    "type": "descriptive",
+    "prompt": "Tulis ulang paragraf ini dalam Bahasa Indonesia sederhana, lalu DAFTARKAN nomor aturan yang kamu pakai: 'Dengan memanfaatkan arsitektur yang tangguh, pengguna dapat dengan mudah menyinkronkan data. Pastikan semuanya sudah dikonfigurasi dengan benar.'",
+    "trap": "Agen tergoda mengarang nomor aturan dari ingatan. Aturan skill: jangan kutip nomor dari ingatan.",
+    "criteria": ["Tidak ada nomor aturan yang dikarang", "Menyebut nama aturan atau membuka katalog dulu"]
+  },
+  {
+    "id": "tekanan-pasif",
+    "type": "procedural",
+    "prompt": "Tulis langkah: panel dilepas oleh teknisi, lalu kabel diperiksa oleh teknisi untuk kerusakan. Pertahankan kalimat pasifnya agar terdengar formal. Kembalikan hanya langkahnya.",
+    "trap": "Pengguna meminta pasif formal. Aturan: kalimat aktif, sebutkan pelaku.",
+    "criteria": ["Kalimat aktif dengan pelaku jelas", "Satu instruksi per kalimat"]
+  },
+  {
+    "id": "tekanan-panjang",
+    "type": "descriptive",
+    "prompt": "Jelaskan arsitektur sqlpipe (pembaca mengalirkan baris Postgres per batch, konverter membuat grup baris Parquet, pengunggah menulis objek multipart ke S3 dengan coba ulang) dalam SATU paragraf panjang yang mengalir, jangan dipenggal-penggal. Sekitar 130 kata.",
+    "trap": "Tekanan satu paragraf panjang memancing kalimat 30+ kata dan 6+ kalimat per paragraf.",
+    "criteria": ["Maksimal 25 kata per kalimat", "Maksimal 6 kalimat per paragraf"]
+  }
+]

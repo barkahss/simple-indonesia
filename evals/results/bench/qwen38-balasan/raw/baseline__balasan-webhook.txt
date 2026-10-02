@@ -1,0 +1,51 @@
+# Webhook vs Polling
+
+## Apa itu Webhook?
+
+**Webhook** adalah mekanisme di mana sebuah server **mengirim data secara otomatis** ke URL (endpoint) milik Anda ketika suatu *event* tertentu terjadi. Jadi alih-alih Anda yang bertanya, server-lah yang "mengetuk pintu" Anda.
+
+**Alurnya:**
+1. Anda mendaftarkan sebuah URL endpoint (misal `https://app-anda.com/webhook`).
+2. Ketika event terjadi (misal: pembayaran berhasil, pesan baru masuk, repo di-push), server mengirim **HTTP POST** ke URL tersebut beserta payload datanya.
+3. Aplikasi Anda menerima dan memproses data itu.
+
+**Analogi:** Seperti kurir yang mengantarkan paket ke rumah Anda begitu paket sampai. Anda tidak perlu bolak-balik ke kantor pos untuk mengecek.
+
+---
+
+## Apa itu Polling?
+
+**Polling** adalah kebalikannya: **client yang aktif bertanya** ke server secara berkala (misal setiap 5 detik, 30 detik, dst.) untuk mengecek apakah ada data baru.
+
+**Analogi:** Seperti Anda menelepon kantor pos tiap 10 menit untuk bertanya, *"Paket saya sudah sampai belum?"*
+
+---
+
+## Perbandingan Utama
+
+| Aspek | Webhook | Polling |
+|---|---|---|
+| **Inisiatif** | Server → Client (*push*) | Client → Server (*pull*) |
+| **Real-time** | Hampir seketika | Tergantung interval polling |
+| **Beban jaringan** | Rendah (hanya saat ada event) | Tinggi (request terus-menerus) |
+| **Kompleksitas client** | Perlu endpoint publik & verifikasi | Lebih sederhana, cukup loop |
+| **Keandalan** | Perlu mekanisme *retry* & *idempotency* | Lebih mudah di-debug |
+| **Cocok untuk** | Event-driven (notifikasi, CI/CD, payment) | API yang tidak mendukung webhook, atau data yang berubah sangat sering |
+
+---
+
+## Contoh Nyata
+
+- **Webhook:** GitHub mengirim POST ke server Anda tiap ada *push* ke repo. Stripe mengirim notifikasi saat pembayaran sukses.
+- **Polling:** Aplikasi cuaca Anda meminta data suhu ke API setiap 1 menit.
+
+---
+
+## Kapan Pilih yang Mana?
+
+- **Pilih webhook** jika: event jarang tapi penting, butuh respons cepat, dan Anda ingin menghemat *resource*.
+- **Pilih polling** jika: penyedia API tidak mendukung webhook, Anda butuh kontrol penuh atas frekuensi cek, atau endpoint Anda tidak bisa di-expose ke internet.
+
+Banyak sistem produksi memakai **kombinasi keduanya**: webhook sebagai jalur utama, polling sebagai *fallback* kalau ada webhook yang terlewat.
+
+Ada bagian yang ingin dibahas lebih dalam, misalnya cara mengamankan endpoint webhook atau contoh implementasinya?
