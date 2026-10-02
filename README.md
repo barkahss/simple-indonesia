@@ -37,6 +37,7 @@ simple-indonesia/
     lint_hook.py              # hook nasihat PostToolUse dan Stop
     simple-indonesia-activate.js  # hook SessionStart, muat blok aturan
   .claude-plugin/             # marketplace + plugin Claude Code
+  .codex-plugin/              # plugin Codex
 ```
 
 ## Pasang
@@ -61,6 +62,15 @@ claude plugin marketplace add barkahss/simple-indonesia && claude plugin install
 
 Gaya output saja: pilih `simple-indonesia:simple-indonesia` di `/config` Output style (nama pendek tidak resolve).
 
+Codex (plugin, hook SessionStart butuh Node):
+
+```sh
+codex plugin marketplace add barkahss/simple-indonesia
+codex plugin add simple-indonesia@simple-indonesia
+```
+
+Codex meminta trust hook sebelum jalan pertama. Hook butuh Node.js.
+
 Opencode / Cursor / VS Code Copilot / Codex / Gemini CLI:
 salin folder repo ini ke folder skills agen Anda. Skill ikut standar `agentskills.io/specification`: folder + `SKILL.md` dengan frontmatter `name` dan `description` (`name` cocok dengan nama folder).
 
@@ -76,6 +86,7 @@ python src/hooks/test_lint_hook.py
 node --test src/hooks/simple-indonesia-activate.test.js
 python evals/check_examples.py
 python evals/run_eval.py --check   # tulis ulang evals/results/RESULTS.md + gate
+python evals/run_bench.py --dry-run   # bench tanpa API; bench asli butuh $env:LLM_API_KEY
 ```
 
 ## Dua mode

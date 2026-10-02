@@ -1,0 +1,19 @@
+{
+  "description": "Muat aturan Bahasa Indonesia sederhana otomatis untuk tiap sesi Codex.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -n \"${PLUGIN_ROOT}\" ] && node \"${PLUGIN_ROOT}/src/hooks/simple-indonesia-activate.js\" || true",
+            "timeout": 5,
+            "statusMessage": "Memuat Simple Indonesia...",
+            "additionalContextLimit": 0
+          }
+        ]
+      }
+    ]
+  }
+}

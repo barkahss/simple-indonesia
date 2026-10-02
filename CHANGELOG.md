@@ -1,5 +1,10 @@
 # Changelog — simple-indonesia
 
+## v1.3.0
+
+- Plugin Codex: `.codex-plugin/plugin.json` + `hooks.json` (SessionStart, skills di root).
+- Bench beneran `evals/run_bench.py`: generate baseline vs skill via API OpenAI-compatible (kunci hanya dari env `LLM_API_KEY`, tidak pernah ditulis ke berkas), nilai dengan `id_lint`, tulis `evals/results/bench/<model-stamp>/`. `--dry-run` untuk tanpa API.
+
 ## v1.2.0
 
 - Plugin Claude Code: `.claude-plugin/marketplace.json` + `plugin.json` (SessionStart, PostToolUse, Stop).

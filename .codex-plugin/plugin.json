@@ -1,0 +1,37 @@
+{
+  "name": "simple-indonesia",
+  "version": "1.3.0",
+  "description": "Tulis Bahasa Indonesia yang polos dan mudah dibaca dengan disiplin ASD-STE100: kalimat pendek, satu kata satu makna, kalimat aktif, syarat sebelum perintah, istilah didefinisikan saat pertama dipakai.",
+  "author": {
+    "name": "barkahss"
+  },
+  "homepage": "https://github.com/barkahss/simple-indonesia",
+  "repository": "https://github.com/barkahss/simple-indonesia",
+  "license": "MIT",
+  "keywords": [
+    "technical-writing",
+    "documentation",
+    "bahasa-indonesia",
+    "ste",
+    "asd-ste100"
+  ],
+  "skills": "./",
+  "hooks": "./.codex-plugin/hooks.json",
+  "interface": {
+    "displayName": "Simple Indonesia",
+    "shortDescription": "Tulis teks teknis yang jelas dengan aturan ala ASD-STE100.",
+    "longDescription": "Muat aturan Bahasa Indonesia sederhana otomatis untuk dokumentasi, prosedur, pesan galat, runbook, catatan rilis, dan laporan insiden.",
+    "developerName": "barkahss",
+    "category": "Productivity",
+    "capabilities": [
+      "Write"
+    ],
+    "websiteURL": "https://github.com/barkahss/simple-indonesia",
+    "defaultPrompt": [
+      "Tulis ulang teks teknis ini dalam Bahasa Indonesia sederhana.",
+      "Tulis prosedur ini dengan aturan ala ASD-STE100.",
+      "Periksa dokumen ini dari pelanggaran Bahasa Indonesia sederhana."
+    ],
+    "brandColor": "#DC2626"
+  }
+}

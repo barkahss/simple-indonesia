@@ -4,6 +4,10 @@ __pycache__/
 .venv/
 venv/
 
+# Rahasia: kunci API tidak boleh masuk repo. Set via env, mis. $env:LLM_API_KEY
+.env
+.env.*
+
 # OS
 Thumbs.db
 .DS_Store

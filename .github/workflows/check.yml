@@ -14,3 +14,4 @@ jobs:
       - run: python src/hooks/test_lint_hook.py
       - run: python evals/check_examples.py
       - run: python evals/run_eval.py --check
+      - run: python evals/run_bench.py --dry-run

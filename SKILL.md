@@ -5,7 +5,7 @@ description: |
 license: MIT
 compatibility: claude-code cursor codex gemini-cli opencode
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
   standard: ASD-STE100 Issue 9 (2025-01-15) adaptasi Bahasa Indonesia + EYD V + KBBI
   based-on: AminBlg/SimpleEnglish v2.1.1 (MIT)
   karpathy-mode: "80% jalan ke ASD-STE100 sebagai baku"
@@ -120,3 +120,4 @@ Aturan ini untuk fakta dan instruksi, bukan salinan pemasaran atau tulisan merek
 - `src/hooks/lint_hook.py`: hook nasihat PostToolUse dan Stop. Uji dengan `python src/hooks/test_lint_hook.py`.
 - `src/hooks/simple-indonesia-activate.js`: hook SessionStart, memuat blok aturan ke konteks. Uji dengan `node --test src/hooks/simple-indonesia-activate.test.js`.
 - `.claude-plugin/`: marketplace dan plugin untuk Claude Code (`claude plugin install simple-indonesia@simple-indonesia`).
+- `.codex-plugin/`: plugin untuk Codex (`codex plugin add simple-indonesia@simple-indonesia`).
