@@ -5,7 +5,7 @@ description: |
 license: MIT
 compatibility: claude-code cursor codex gemini-cli opencode
 metadata:
-  version: "1.3.0"
+  version: "1.4.0"
   standard: ASD-STE100 Issue 9 (2025-01-15) adaptasi Bahasa Indonesia + EYD V + KBBI
   based-on: AminBlg/SimpleEnglish v2.1.1 (MIT)
   karpathy-mode: "80% jalan ke ASD-STE100 sebagai baku"
@@ -121,3 +121,4 @@ Aturan ini untuk fakta dan instruksi, bukan salinan pemasaran atau tulisan merek
 - `src/hooks/simple-indonesia-activate.js`: hook SessionStart, memuat blok aturan ke konteks. Uji dengan `node --test src/hooks/simple-indonesia-activate.test.js`.
 - `.claude-plugin/`: marketplace dan plugin untuk Claude Code (`claude plugin install simple-indonesia@simple-indonesia`).
 - `.codex-plugin/`: plugin untuk Codex (`codex plugin add simple-indonesia@simple-indonesia`).
+- `tools/kamus/`: ekstraktor dan lint pilihan kata. Repo tidak ship isi KBBI; daftar dibuat dari `references/kata-baku.md` atau daftar Anda sendiri (`python tools/kamus/ekstrak.py`, lalu `python tools/kamus/kamus_lint.py tools/kamus/kata-baku.tsv berkas.md`).

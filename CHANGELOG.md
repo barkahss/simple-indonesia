@@ -1,5 +1,9 @@
 # Changelog — simple-indonesia
 
+## v1.4.0
+
+- Tool kamus `tools/kamus/`: `ekstrak.py` membangun `kata-baku.tsv` dari `references/kata-baku.md` (tulisan sendiri, bukan isi KBBI), `kamus_lint.py` melint pilihan kata plus akhiran melekat (-nya/-ku/-mu/-lah/-kah), keduanya dengan `--self-test`. Berkas TSV generated/lokal tidak ikut commit, mirror `tools/ste-dictionary` SimpleEnglish.
+
 ## v1.3.0
 
 - Plugin Codex: `.codex-plugin/plugin.json` + `hooks.json` (SessionStart, skills di root).

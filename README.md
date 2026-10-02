@@ -38,6 +38,7 @@ simple-indonesia/
     simple-indonesia-activate.js  # hook SessionStart, muat blok aturan
   .claude-plugin/             # marketplace + plugin Claude Code
   .codex-plugin/              # plugin Codex
+  tools/kamus/                # ekstraktor + lint pilihan kata (tanpa isi KBBI)
 ```
 
 ## Pasang
@@ -87,6 +88,8 @@ node --test src/hooks/simple-indonesia-activate.test.js
 python evals/check_examples.py
 python evals/run_eval.py --check   # tulis ulang evals/results/RESULTS.md + gate
 python evals/run_bench.py --dry-run   # bench tanpa API; bench asli butuh $env:LLM_API_KEY
+python tools/kamus/ekstrak.py --self-test
+python tools/kamus/kamus_lint.py --self-test
 ```
 
 ## Dua mode

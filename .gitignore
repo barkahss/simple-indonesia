@@ -9,6 +9,9 @@ venv/
 .env.*
 # Konfigurasi bench lokal (base_url/model/api_key mesin sendiri, tidak ikut commit)
 evals/.bench.local.json
+# Daftar kata generated/lokal (dibuat dari berkas milik sendiri, jangan commit)
+tools/kamus/kata-baku.tsv
+tools/kamus/kata-saya.tsv
 
 # OS
 Thumbs.db

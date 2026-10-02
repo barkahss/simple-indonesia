@@ -36,7 +36,7 @@ Baku -> hindari:
 - nasihat -> nasehat
 - cederai? -> gunakan bentuk KBBI: cedera (bukan cidera)
 - sekadar -> sekedar
-- telanjur? -> terlanjur (pilih baku KBBI: terlanjur)
+- terlanjur -> telanjur
 - antre -> antri
 - limfa? abaikan — contoh: pilih satu dan konsisten.
 

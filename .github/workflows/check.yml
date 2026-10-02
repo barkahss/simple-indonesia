@@ -15,3 +15,5 @@ jobs:
       - run: python evals/check_examples.py
       - run: python evals/run_eval.py --check
       - run: python evals/run_bench.py --dry-run
+      - run: python tools/kamus/ekstrak.py --self-test
+      - run: python tools/kamus/kamus_lint.py --self-test
