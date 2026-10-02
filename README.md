@@ -1,13 +1,18 @@
-# Simple Indonesia — Skill Bahasa Indonesia Sederhana ala ASD-STE100
+# Simple Indonesia
 
-Repo ini **adalah** skill-nya langsung (skill-at-root): `SKILL.md` ada di root, siap dipasang ke agen apa pun yang ikut standar Agent Skills (`agentskills.io/specification`).
+Skill Agent Skills agar LLM menulis **Bahasa Indonesia yang bersih, tanpa bau AI** — dengan disiplin ASD-STE100 yang diadaptasi ke EYD V dan KBBI. Dioptimasi khusus Bahasa Indonesia (kalimat efektif, 238 kata baku terverifikasi silang, slop AI Indonesia), bukan terjemahan mentah versi Inggris.
 
-Skill agar LLM menulis Bahasa Indonesia yang bersih, tanpa bau AI, dengan disiplin ASD-STE100 yang diadaptasi ke EYD V dan KBBI. Dioptimasi khusus Bahasa Indonesia: kalimat efektif, kata baku KBBI, dan daftar slop AI Indonesia — bukan terjemahan mentah dari versi Inggris.
+Repo ini **adalah** skill-nya langsung (skill-at-root): `SKILL.md` ada di root.
 
-Terinspirasi oleh:
-- Saran Karpathy: minta LLM menjelaskan dalam ASD-STE100. LLM sangat paham bahasa ini. Batasannya berat, hasilnya jauh lebih mudah dibaca. Karena spec asli sangat ketat, baku skill ini adalah 80% jalan ke ASD-STE100.
-- Referensi: AminBlg/SimpleEnglish (MIT) untuk Bahasa Inggris — struktur parity: lint, eval, hooks, output style.
-- Standar: ASD-STE100 Issue 9 (15 Jan 2025, 53 aturan, ~900 kata) + Agent Skills specification.
+## Kenapa begini (metode Karpathy)
+
+Karpathy menyarankan: minta LLM menjelaskan dalam **ASD-STE100** — bahasa terkendali aerospace untuk manual perawatan. LLM sangat paham bahasa ini; batasannya yang berat menghasilkan gaya tulisan yang jauh lebih mudah dibaca. Karena spec aslinya sangat ketat, baku skill ini adalah **80% jalan ke ASD-STE100**: tegas tetapi tetap natural.
+
+## Fitur
+
+- Dua register: **Dokumen** (prosedural 20 kata/kalimat, deskriptif 25 kata) dan **Balasan** (prosa saja, jawab dulu).
+- Dua mode: **Plain** (baku) dan **Strict** (tambah disiplin KBBI + EYD V bila Anda sebut STE/ASD-STE100/EYD/KBBI/kepatuhan).
+- Lint deterministik, bench terukur, hook sesi, plugin Claude + Codex, tool kamus kata baku.
 
 ## Isi
 
@@ -18,9 +23,9 @@ simple-indonesia/
     kata-ganti.md             # peta kata berlebih AI -> pengganti polos
     kasus-pakai.md            # pola untuk galat, runbook, insiden, rilis, UI, terjemahan
     katalog-aturan.md         # adaptasi 53 aturan untuk mode PERIKSA (parafrasa)
-    kata-baku.md              # disiplin KBBI + EYD V untuk mode Strict
+    kata-baku.md              # 238 kata baku vs tidak baku + disiplin KBBI/EYD V
   examples/
-    sebelum-sesudah.md        # contoh rewrite Indonesia
+    sebelum-sesudah.md        # contoh rewrite Indonesia (Sesudah = 0 pelanggaran)
   evals/
     id_lint.py                # lint deterministik + --self-test
     scenarios.json            # 8 skenario uji Bahasa Indonesia
@@ -32,7 +37,7 @@ simple-indonesia/
     run_bench.py              # bench dokumen (--scenarios, resume, dry-run)
     run_reply_bench.py        # bench balasan (resume, dry-run)
     fixtures/                 # bukti uji (asli vs bersih)
-    results/RESULTS.md        # ringkasan angka terukur
+    results/                  # angka terukur + output mentah bench
   prompts/
     system-prompt.md          # versi ringkas + ~60 token untuk harness tanpa SKILL.md
   output-styles/
@@ -47,41 +52,34 @@ simple-indonesia/
 
 ## Pasang
 
-Agen apa pun dengan skills CLI, dari root repo ini:
-
 ```sh
-npx skills add ./
-```
-
-Atau dari GitHub:
-
-```sh
+# Agen apa pun (skills CLI), dari GitHub:
 npx skills add barkahss/simple-indonesia
-```
 
-Claude Code (plugin):
-
-```sh
+# Claude Code (plugin):
 claude plugin marketplace add barkahss/simple-indonesia && claude plugin install simple-indonesia@simple-indonesia
-```
 
-Gaya output saja: pilih `simple-indonesia:simple-indonesia` di `/config` Output style (nama pendek tidak resolve).
-
-Codex (plugin, hook SessionStart butuh Node):
-
-```sh
+# Codex (plugin, hook butuh Node.js):
 codex plugin marketplace add barkahss/simple-indonesia
 codex plugin add simple-indonesia@simple-indonesia
 ```
 
-Codex meminta trust hook sebelum jalan pertama. Hook butuh Node.js.
+Gaya output saja: pilih `simple-indonesia:simple-indonesia` di `/config` Output style (nama pendek tidak resolve).
 
-Opencode / Cursor / VS Code Copilot / Codex / Gemini CLI:
-salin folder repo ini ke folder skills agen Anda. Skill ikut standar `agentskills.io/specification`: folder + `SKILL.md` dengan frontmatter `name` dan `description` (`name` cocok dengan nama folder).
-
-Tanpa dukungan skill? Tempel blok aturan dari `prompts/system-prompt.md` ke system prompt, `AGENTS.md`, atau `.cursorrules`.
+Opencode / Cursor / Copilot / Gemini CLI: salin folder repo ini ke folder skills agen. Tanpa dukungan skill? Tempel blok dari `prompts/system-prompt.md` ke system prompt, `AGENTS.md`, atau `.cursorrules`.
 
 Lalu minta: "tulis ulang ini dengan simple-indonesia" atau "jelaskan dengan bahasa sederhana".
+
+## Bukti angka (qwen3.8-max lokal, Okt 2026)
+
+| Bench | Baseline | Skill | Turun |
+|---|---|---|---|
+| Dokumen (8 skenario) | 25 | 1 | 96% |
+| Balasan (8 pertanyaan) | 349 | 70 | 80% |
+| Contoh (sebelum→sesudah) | 12 | 0 | 100% |
+| Pressure (5 jebakan) | 15 | 10 | 33% + 1 lulus, 4 parsial kriteria perilaku |
+
+Detail mentah: `evals/results/`. Bukan vonis kepatuhan — tidak ada alat yang menjamin kepatuhan ASD-STE100.
 
 ## Uji
 
@@ -90,18 +88,25 @@ python evals/id_lint.py --self-test
 python src/hooks/test_lint_hook.py
 node --test src/hooks/simple-indonesia-activate.test.js
 python evals/check_examples.py
-python evals/run_eval.py --check   # tulis ulang evals/results/RESULTS.md + gate
-python evals/run_bench.py --dry-run   # bench tanpa API; bench asli butuh $env:LLM_API_KEY
+python evals/run_eval.py --check
+python evals/run_bench.py --dry-run        # bench asli butuh $env:LLM_API_KEY
 python evals/run_reply_bench.py --dry-run
 python tools/kamus/ekstrak.py --self-test
 python tools/kamus/kamus_lint.py --self-test
 ```
 
-## Dua mode
+## Sumber
 
-- Plain (baku, 80% STE ala Karpathy): kalimat pendek, aktif, syarat dulu, satu kata satu makna, definisikan istilah, tanpa slop AI. Balasan selalu Plain: prosa saja, jawab dulu.
-- Strict (bila Anda sebut STE, ASD-STE100, EYD, KBBI, baku, kepatuhan): tambah disiplin kosakata `kata-baku.md`. Tidak ada alat yang menjamin kepatuhan.
+- Saran Karpathy soal ASD-STE100 untuk output LLM — cuitan "We'll be spending a lot more time trying to understand the outputs of language models" (@karpathy, https://x.com/karpathy).
+- Acuan struktur (Inggris): AminBlg/SimpleEnglish — https://github.com/AminBlg/SimpleEnglish.
+- Standar ASD-STE100 Issue 9 (53 aturan, ~900 kata), unduhan resmi gratis — https://www.asd-ste100.org.
+- Spesifikasi Agent Skills (Anthropic, standar terbuka) — https://agentskills.io/specification.
+- KBBI Daring, wasit akhir kata baku — https://kbbi.kemdikbud.go.id.
+- EYD V / Pedoman Umum Ejaan, Badan Bahasa — https://badanbahasa.kemdikbud.go.id.
+- Daftar kata baku pembanding (655): Ruangguru — https://www.ruangguru.com/blog/contoh-kata-baku-dan-tidak-baku.
+- Daftar kata baku pembanding (302): Deepublish — https://penerbitdeepublish.com/panduan-menulis/kata-baku-dan-tidak-baku/.
+- Repo ini: https://github.com/barkahss/simple-indonesia.
 
-## Bukan sertifikasi
+## Lisensi
 
-Tidak ada alat yang tersertifikasi ASD. Ini parafrasa untuk pengajaran, tidak mereproduksi teks spec atau kamus. Unduhan resmi gratis di asd-ste100.org. Proyek tidak berafiliasi dengan ASD atau STEMG.
+MIT — lihat `LICENSE`. Parafrasa untuk pengajaran; tidak mereproduksi teks spec ASD-STE100 maupun isi KBBI. Proyek tidak berafiliasi dengan ASD, STEMG, atau Badan Bahasa.
