@@ -2,6 +2,7 @@
 """Pemeriksaan angka dan kebersihan contoh. Port check_numbers.py yang disederhanakan.
 
 - Menjalankan id_lint --self-test
+- Menjalankan readability --self-test
 - Menjalankan uji hook
 - Memastikan examples/sebelum-sesudah.md bagian Sesudah lebih bersih dari Sebelum
 """
@@ -21,6 +22,10 @@ def main():
         [sys.executable, str(ROOT / "evals" / "id_lint.py"), "--self-test"]
     )
     assert r1.returncode == 0, "id_lint self-test gagal"
+    r1b = subprocess.run(
+        [sys.executable, str(ROOT / "evals" / "readability.py"), "--self-test"]
+    )
+    assert r1b.returncode == 0, "readability self-test gagal"
     r2 = subprocess.run(
         [sys.executable, str(ROOT / "src" / "hooks" / "test_lint_hook.py")]
     )

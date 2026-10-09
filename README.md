@@ -85,6 +85,7 @@ Detail mentah: `evals/results/`. Bukan vonis kepatuhan — tidak ada alat yang m
 
 ```sh
 python evals/id_lint.py --self-test
+python evals/readability.py --self-test
 python src/hooks/test_lint_hook.py
 node --test src/hooks/simple-indonesia-activate.test.js
 python evals/check_examples.py
@@ -94,6 +95,8 @@ python evals/run_reply_bench.py --dry-run
 python tools/kamus/ekstrak.py --self-test
 python tools/kamus/kamus_lint.py --self-test
 ```
+
+Lapis gratis tiap commit: `evals/readability.py` (rata-rata kata per kalimat, persen kalimat panjang, persen pasif, slop per 100 kata) plus `evals/golden.json` (6 tugas baku: runbook, galat, README, balasan, tolak pemasaran, insiden).
 
 ## Sumber
 

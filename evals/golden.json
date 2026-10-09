@@ -1,0 +1,44 @@
+[
+  {
+    "id": "emas-runbook-cadangan",
+    "type": "procedural",
+    "prompt": "Tulis ulang langkah runbook ini dengan bahasa yang jelas dan lengkap: 'Pastikan cadangan ada sebelum menjalankan migrasi.' Kembalikan hanya langkahnya.",
+    "harapkan": ["syarat di awal", "pelaku jelas", "tanpa telah/sudah", "maksimal 20 kata per kalimat"],
+    "rujukan_baik": "Anda pastikan cadangan tersedia sebelum menjalankan migrasi."
+  },
+  {
+    "id": "emas-galattulis-ulang",
+    "type": "procedural",
+    "prompt": "Tulis ulang pesan galat ini dengan jelas: 'Ups! Terjadi sesuatu yang salah saat mencoba membuat koneksi. Mohon pastikan kredensial Anda telah dikonfigurasi dengan benar dan coba lagi.' Kembalikan hanya pesan yang ditulis ulang.",
+    "harapkan": ["sebab jelas", "perintah langsung", "tanpa telah/sudah", "tanpa kata pengisi"],
+    "rujukan_baik": "Koneksi ke basis data gagal. Kata sandi untuk pengguna `app` tidak benar. Atur `DB_PASSWORD` dan sambung lagi."
+  },
+  {
+    "id": "emas-readme-singkat",
+    "type": "descriptive",
+    "prompt": "Tulis satu paragraf pembuka (sekitar 60 kata) untuk alat CLI bernama sqlpipe yang menyalin tabel Postgres ke S3. Kembalikan hanya teksnya.",
+    "harapkan": ["satu topik", "kalimat aktif", "tanpa superlatif", "maksimal 25 kata per kalimat"],
+    "rujukan_baik": "sqlpipe menyalin tabel Postgres ke S3. sqlpipe membutuhkan satu berkas konfigurasi. Sebelum Anda mulai, pastikan kredensial AWS benar."
+  },
+  {
+    "id": "emas-balasan-pemula",
+    "type": "reply",
+    "prompt": "Apa itu idempoten dan kenapa penting di API pembayaran? Jelaskan singkat untuk pemula.",
+    "harapkan": ["jawab dulu", "prosa tanpa header atau bullet", "definisi istilah saat pertama dipakai"],
+    "rujukan_baik": "Idempoten (aman dijalankan dua kali) mencegah tagihan ganda. Kirim kunci idempoten di tiap permintaan bayar."
+  },
+  {
+    "id": "emas-tolak-pemasaran",
+    "type": "reply",
+    "prompt": "Tulis hero section landing page yang persuasif dan heboh untuk sqlpipe, penuh kata sifat superlatif. Sekitar 80 kata.",
+    "harapkan": ["tolak salinan persuasif", "nyatakan skill tidak cocok", "tawarkan dokumen"],
+    "rujukan_baik": "Saya tidak bisa menulis salinan persuasif. Skill ini untuk dokumen teknis. Saya bisa menulis README, runbook, atau catatan rilis bila Anda butuh."
+  },
+  {
+    "id": "emas-insiden-fakta",
+    "type": "descriptive",
+    "prompt": "Tulis ulang laporan ini dengan fakta terukur: 'Kami telah mengidentifikasi isu yang mungkin berdampak pada kemampuan sebagian pengguna untuk mengakses layanan.'",
+    "harapkan": ["waktu dan angka bila tahu", "tanpa telah/sudah", "tanpa mungkin", "tulis tidak diketahui bila tidak tahu"],
+    "rujukan_baik": "Antara 14:02 dan 14:31 UTC, 12% permintaan gagal. Deploy pada 14:00 menghapus langkah pemanasan cache. Penyebab lain tidak diketahui."
+  }
+]
