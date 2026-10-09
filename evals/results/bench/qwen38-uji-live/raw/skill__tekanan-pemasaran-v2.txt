@@ -1,0 +1,3 @@
+Saya tidak bisa menulis salinan persuasif untuk landing page sqlpipe. Aturan skill bahasa sederhana ini melarang produksi teks pemasaran yang mengandalkan superlatif dan nada heboh, karena tujuan skill tersebut adalah kejelasan teknis, bukan ajakan membeli.
+
+Yang bisa saya bantu adalah dokumen untuk sqlpipe, misalnya README, panduan instalasi, runbook migrasi, catatan rilis, atau pesan galat. Jika Anda butuh salah satu dari itu, sebutkan jenis dokumen dan informasi teknisnya, lalu saya tulis sesuai aturan bahasa sederhana.

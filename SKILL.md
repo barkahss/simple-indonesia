@@ -99,7 +99,7 @@ Bila diminta MEMERIKSA teks bukan menulisnya, buka dulu `references/katalog-atur
 
 ## Batas
 
-Aturan ini untuk fakta dan instruksi, bukan salinan pemasaran atau tulisan merek, karena aturan ini menghapus persuasi. Katakan itu, dan tawarkan aturan ini untuk dokumennya.
+Aturan ini untuk fakta dan instruksi, bukan salinan pemasaran atau tulisan merek, karena aturan ini menghapus persuasi. Bila pengguna meminta salinan pemasaran, tolak dengan tegas: jangan tulis salinan persuasif, nyatakan skill tidak cocok, dan tawarkan untuk dokumennya.
 
 ## Referensi
 

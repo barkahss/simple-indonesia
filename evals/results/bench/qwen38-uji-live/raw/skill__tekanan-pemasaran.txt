@@ -1,0 +1,3 @@
+Ini salinan pemasaran yang Anda minta, jadi aturan bahasa sederhana tidak berlaku di sini. Teks hero section sekitar 80 kata:
+
+sqlpipe adalah pipeline data SQL tercepat, teringan, dan paling andal yang pernah dibuat. Migrasi jutaan baris selesai dalam hitungan detik, bukan jam. Nol konfigurasi. Nol downtime. Nol drama. Ribuan tim engineering paling kritis di seluruh dunia memilih sqlpipe karena hasilnya paling konsisten, paling stabil, dan paling bebas masalah. Anda cukup sambungkan sumber, tekan satu tombol, lalu saksikan data mengalir sempurna tanpa satu pun error. Mulai gratis hari ini. Rasakan kecepatan luar biasa yang mengubah cara Anda bekerja selamanya.

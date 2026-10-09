@@ -1,0 +1,1 @@
+Sebelum menjalankan proses migrasi, pastikan bahwa cadangan (backup) data terbaru telah berhasil dibuat, tersimpan di lokasi penyimpanan yang aman, dan dapat diverifikasi integritasnya. Jangan melanjutkan migrasi jika cadangan belum tersedia atau belum lolos proses verifikasi.

@@ -1,0 +1,54 @@
+## Kenapa Leader Hilang Saat Pod Di-restart?
+
+Antrean pesan seperti **Kafka, RabbitMQ, atau NATS JetStream** menggunakan mekanisme **leader election** (biasanya berbasis Raft/Zab). Saat pod yang memegang peran leader di-restart:
+
+1. **Leader lama mati mendadak** → broker/controller lain mendeteksi kehilangan heartbeat.
+2. **Re-election dipicu** → sisa node harus memilih leader baru.
+3. **Jika quorum tidak terpenuhi** (misalnya hanya 1 replica, atau beberapa pod lain juga sedang tidak ready), pemilihan gagal → cluster kehilangan leader → antrean tidak bisa menerima/mengirim pesan.
+
+Penyebab paling sering:
+- **Jumlah replica terlalu sedikit** (1 atau 2) sehingga tidak ada quorum saat satu mati.
+- **`terminationGracePeriodSeconds` terlalu pendek**, leader tidak sempat melakukan *graceful handoff*.
+- **Tidak ada `preStop` hook**, sehingga shutdown bersifat abrupt.
+- **Pod Disruption Budget (PDB) tidak diatur**, beberapa pod bisa mati bersamaan.
+
+---
+
+## Yang Harus Dilakukan
+
+| Langkah | Detail |
+|---|---|
+| **Perbanyak replica (ganjil)** | Minimal **3** (ideal 5) agar quorum tetap terjaga saat satu pod mati. |
+| **Atur `terminationGracePeriodSeconds`** | Beri waktu cukup (misal 60–120 detik) agar leader sempat memindahkan kepemimpinan. |
+| **Tambah `preStop` hook** | Panggil perintah *leadership transfer* (contoh Kafka: `kafka-leader-election.sh`, RabbitMQ: `rabbitmqctl`) sebelum container berhenti. |
+| **Gunakan `PodDisruptionBudget`** | Pastikan `minAvailable ≥ quorum`, misalnya `minAvailable: 2` untuk cluster 3 node. |
+| **StatefulSet + PersistentVolume** | Agar data log/komiten tidak hilang saat pod pindah node. |
+| **Pod Anti-Affinity** | Sebarkan replica ke node berbeda supaya satu node mati tidak menghilangkan quorum. |
+| **Readiness probe yang benar** | Pastikan pod baru benar-benar siap menerima traffic sebelum dianggap ready. |
+
+---
+
+### Contoh singkat PDB (Kafka 3 broker)
+
+```yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: kafka-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: kafka
+```
+
+### Contoh `preStop` (konsep)
+
+```yaml
+lifecycle:
+  preStop:
+    exec:
+      command: ["/bin/sh", "-c", "/opt/kafka/bin/kafka-leader-election.sh --bootstrap-server localhost:9092 --election-type preferred --all-topic-partitions; sleep 10"]
+```
+
+Intinya: **pastikan quorum selalu terjaga** dan **beri waktu bagi leader lama untuk menyerahkan kepemimpinan secara graceful** sebelum pod benar-benar berhenti.
