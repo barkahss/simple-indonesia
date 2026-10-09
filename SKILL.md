@@ -5,7 +5,7 @@ description: |
 license: MIT
 compatibility: claude-code cursor codex gemini-cli opencode
 metadata:
-  version: "1.6.5"
+  version: "1.6.6"
   standard: ASD-STE100 Issue 9 (2025-01-15) adaptasi Bahasa Indonesia + EYD V + KBBI
   based-on: AminBlg/SimpleEnglish v2.1.1 (MIT)
   karpathy-mode: "80% jalan ke ASD-STE100 sebagai baku"

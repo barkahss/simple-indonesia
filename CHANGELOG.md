@@ -1,5 +1,11 @@
 # Changelog — simple-indonesia
 
+## v1.6.6
+
+- Tolak tegas salinan pemasaran di SKILL dan system prompt; uji ulang live qwen3.8-max lulus penuh.
+- Tambah lapis gratis tiap commit: `evals/readability.py` (rata-rata kata per kalimat, persen kalimat panjang, persen pasif, slop per 100 kata) plus `evals/golden.json` (6 tugas baku).
+- Hasil live tersimpan di `evals/results/bench/qwen38-uji-live/`.
+
 ## v1.6.5
 
 - Selaraskan daftar modal (tambah seharusnya, harusnya, sekiranya, seandainya), aturan heading satu atau dua kalimat, larangan nominalisasi di Plain, kunci sinonim `mulai`, sudut pandang Anda/sistem, dan larangan pagar tanpa fakta.
