@@ -1,5 +1,12 @@
 # Changelog — simple-indonesia
 
+## Selanjutnya (belum rilis)
+
+- Selaraskan daftar modal (tambah seharusnya, harusnya, sekiranya, seandainya), aturan heading satu atau dua kalimat, larangan nominalisasi di Plain, kunci sinonim `mulai`, sudut pandang Anda/sistem, dan larangan pagar tanpa fakta.
+- Perbaiki contoh runbook (syarat di awal), contoh rilis (tanpa kata `hal`), contoh status-page (tanpa Inggris telanjang), dan aturan batas pemasaran.
+- Keraskan leksikon slop (cukup, relatif, umumnya, biasanya, di era digital, tentunya, optimal, signifikan, selain itu) dan sinkronkan pola opener/closer hook dengan lint.
+- Angka contoh bergerak 12 ke 13 karena lint baru menangkap `signifikan` tanpa angka; Sesudah tetap 0.
+
 ## v1.6.0
 
 - Contoh Sesudah kini 0 pelanggaran (baris meta ditulis ulang tanpa sebut kata slop).

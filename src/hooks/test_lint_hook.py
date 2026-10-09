@@ -45,6 +45,22 @@ def main():
         }
     )
     assert code == 0
+    # 4. Stop: closer Inggris terdeteksi
+    code, out, _ = run(
+        {
+            "hook_event_name": "Stop",
+            "last_assistant_message": "Hasil tersimpan. Let me know bila ada galat.",
+        }
+    )
+    assert code == 0 and "systemMessage" in out, out
+    # 5. Stop: pembuka varian panjang terdeteksi
+    code, out, _ = run(
+        {
+            "hook_event_name": "Stop",
+            "last_assistant_message": "Pertanyaan yang bagus. Hasil tersimpan di data/terbaru.json.",
+        }
+    )
+    assert code == 0 and "systemMessage" in out, out
     print("hook test OK")
 
 

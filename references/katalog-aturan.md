@@ -24,7 +24,7 @@ Aturan dikelompokkan seperti Issue 9: kata, frasa, kata kerja, kalimat, prosedur
 
 1.8 Gunakan "konfigurasi" untuk semua pengaturan. Jangan putar `config`, setelan, opsi.
 
-1.9 Hapus kata yang tidak menambah fakta: secara sederhana, mulus, kuat, canggih, komprehensif, manfaatkan.
+1.9 Hapus kata yang tidak menambah fakta: secara sederhana, mulus, kuat, canggih, komprehensif, manfaatkan, cukup, relatif, umumnya, biasanya bila menyamarkan fakta.
 
 1.10 Jangan pakai idiom atau kiasan: di balik layar, masuk angin, membuka jalan. Tulis makna harfiah.
 
@@ -66,7 +66,7 @@ Patuh: "Teknisi melepas panel."
 
 3.6 Jangan gunakan bentuk "-ing" Inggris yang diterjemahkan kaku. Tulis verba Indonesia yang aktif.
 
-3.7 Modal yang diizinkan: dapat, bisa, akan, harus, wajib. Modal yang dilarang: sebaiknya, semestinya, mungkin, barangkali.
+3.7 Modal yang diizinkan: dapat, bisa, akan, harus, wajib. Modal yang dilarang: sebaiknya, semestinya, seharusnya, harusnya, mungkin, barangkali, kiranya, sekiranya, seandainya.
 
 3.8 "Harus" untuk kewajiban. "Akan" untuk masa depan. "Dapat/bisa" untuk kemampuan. Jangan campur.
 

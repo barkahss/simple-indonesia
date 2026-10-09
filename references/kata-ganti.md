@@ -30,10 +30,13 @@ Tabel ini milik skill ini, bukan kamus ASD. Tabel ini memetakan kata yang sering
 | merampingkan, menyederhanakan proses | buat lebih sederhana, buat lebih cepat |
 | sangat banyak, segudang | banyak |
 | menangani masalah, mengatasi isu | perbaiki kesalahan, hapus galat |
-| penting, krusial, sangat penting, paramount | penting |
+| penting, krusial, sangat penting, paramount | (hapus, lalu nyatakan fakta) |
 | permadani, bukti, sinergi | (hapus) |
-| interaksi, interplay | interaksi (atau hapus) |
-| rumit, intricate | kompleks |
+| interaksi, interplay | (hapus, atau beri pelaku dan tindakannya) |
+| rumit, intricate | sulit (beri ukuran: berapa langkah, berapa lama) |
+| cukup, relatif, umumnya, biasanya (tanpa fakta) | (hapus, lalu nyatakan fakta) |
+| di era digital, di tengah, tentunya, hadir dengan, solusi (tanpa fakta) | (hapus, lalu nyatakan fakta) |
+| optimal (tanpa angka), signifikan (tanpa angka) | beri angka atau hapus |
 | hidup, bernuansa, multifaset | (hapus, atau sebutkan bagiannya) |
 | ranah, lanskap (kiasan) | bidang |
 | inovatif, mutakhir, canggih, terdepan, revolusioner, belum pernah ada | baru (atau hapus) |
@@ -42,6 +45,7 @@ Tabel ini milik skill ini, bukan kamus ASD. Tabel ini memetakan kata yang sering
 | memamerkan, menggarisbawahi, menekankan | tunjukkan |
 | mendorong, memberdayakan, memperkuat | bantu, dukung |
 | memanfaatkan | gunakan |
+| memanfaatkan, utilisasi, leverage | gunakan |
 | meningkatkan, mengoptimalkan | tingkatkan, perbaiki |
 | menaikkan | naikkan |
 | selain itu, lebih lanjut | juga |

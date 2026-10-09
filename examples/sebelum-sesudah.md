@@ -16,7 +16,9 @@ Sebelum:
 > Jika terjadi kegagalan, disarankan untuk memeriksa log terlebih dahulu sebelum melakukan restart service, karena hal ini penting untuk diagnosis.
 
 Sesudah:
-> Jika layanan gagal, baca log. Baca log sebelum Anda memulai ulang layanan `sync` pada host yang menjalankan tugas. Log menunjukkan sebab kegagalan.
+> Jika layanan gagal, baca log sebelum Anda memulai ulang layanan. Baca log pada host yang menjalankan tugas. Log menunjukkan sebab kegagalan.
+
+Mengapa lebih baik: syarat di awal tiap kalimat, pelaku jelas, satu instruksi per kalimat.
 
 ## 3. Pesan galat
 
@@ -40,7 +42,9 @@ Sebelum:
 > Dalam rilis ini, kami dengan bangga mempersembahkan berbagai peningkatan yang komprehensif dan inovatif untuk meningkatkan pengalaman pengguna secara signifikan!
 
 Sesudah:
-> Rilis ini mengubah dua hal. Perbarui panggilan ke `v2/users`. Field `name` pecah menjadi `first_name` dan `last_name`.
+> Rilis ini membawa dua perubahan. Perbarui panggilan ke `v2/users`. Field `name` pecah menjadi `first_name` dan `last_name`.
+
+Mengapa lebih baik: satu perubahan per kalimat, perintah langsung, tanpa kata sifat tanpa fakta.
 
 ## 6. Balasan chat
 

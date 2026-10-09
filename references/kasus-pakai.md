@@ -48,7 +48,7 @@ Mode: prosedural. Prompt sistem adalah prosedur untuk pembaca yang tidak dapat b
 Mode: deskriptif, batas 25 kata. Banyak pembaca pesan ini bukan penutur asli.
 
 > Sebelum: Kami mohon maaf atas ketidaknyamanan yang mungkin terjadi.
-> Sesudah: API down selama 18 menit. Unggahan selama waktu itu tersimpan dan akan diproses hari ini.
+> Sesudah: API berhenti selama 18 menit. Unggahan selama waktu itu tersimpan dan sistem memprosesnya hari ini.
 
 ## Persiapan terjemahan dan lokalisasi
 
@@ -58,8 +58,8 @@ Untuk Bahasa Indonesia ke Inggris atau sebaliknya: jaga satu istilah konsisten, 
 
 ## Salinan UI dan empty state
 
-Mode: prosedural, batas panjang ketat. Tombol dan label adalah nama teknis dan dikecualikan. Salinan badan ikut aturan: "Belum ada proyek. Buat proyek untuk mulai."
+Mode: prosedural, batas panjang ketat. Tombol dan label adalah nama teknis dan dikecualikan dari aturan gaya, tetapi prosa badan tetap ikut aturan. Salinan badan ikut aturan: "Belum ada proyek. Buat proyek untuk mulai." Subjek commit memakai imperatif singkat di bawah 50 karakter bila mungkin.
 
 ## Di mana STE tidak cocok
 
-Jangan gunakan STE untuk halaman pemasaran, posting peluncuran, posting blog, atau tulisan merek. STE menghapus persuasi. Tulis teks itu dengan suara Anda, dan gunakan STE untuk dokumen yang ditautkannya.
+Jangan gunakan STE untuk halaman pemasaran, posting peluncuran, posting blog, atau tulisan merek. STE menghapus persuasi. Bila pengguna meminta salinan pemasaran, nyatakan skill tidak cocok, jangan tulis salinan persuasif bergaya STE, dan tawarkan untuk dokumennya. Tulis teks itu dengan suara Anda, dan gunakan STE untuk dokumen yang ditautkannya.

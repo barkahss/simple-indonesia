@@ -76,7 +76,7 @@ Lalu minta: "tulis ulang ini dengan simple-indonesia" atau "jelaskan dengan baha
 |---|---|---|---|
 | Dokumen (8 skenario) | 25 | 1 | 96% |
 | Balasan (8 pertanyaan) | 349 | 70 | 80% |
-| Contoh (sebelum→sesudah) | 12 | 0 | 100% |
+| Contoh (sebelum→sesudah) | 13 | 0 | 100% |
 | Pressure (5 jebakan) | 15 | 10 | 33% + 1 lulus, 4 parsial kriteria perilaku |
 
 Detail mentah: `evals/results/`. Bukan vonis kepatuhan — tidak ada alat yang menjamin kepatuhan ASD-STE100.

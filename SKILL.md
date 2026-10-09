@@ -30,21 +30,21 @@ Saat diminta menulis atau menulis ulang dokumentasi, terapkan aturan ini ke pros
 
 3. Syarat sebelum perintah, dengan koma: "Jika build gagal, baca log."
 
-4. Gunakan kala sederhana dan kalimat aktif. Hindari "telah/sudah" yang tidak perlu ("Layanan telah dimulai" menjadi "Layanan dimulai"). Hindari anak kalimat "-kan" yang menggantung (", memudahkan pengguna" menjadi kalimat baru). Sebutkan pelaku: "Anda menjalankan migrasi." Pasif dengan di- hanya boleh bila pelaku tidak diketahui dalam teks deskriptif.
+4. Gunakan kala sederhana dan kalimat aktif. Hindari "telah/sudah" yang tidak perlu ("Layanan telah dimulai" menjadi "Layanan dimulai"). Hindari anak kalimat "-kan" yang menggantung (", memudahkan pengguna" menjadi kalimat baru). Jangan nominalisasi: ubah benda hasil verba menjadi verba ("sebelum penerimaan unit" menjadi "sebelum Anda menerima unit"). Sebutkan pelaku: "Anda menjalankan migrasi." Jangan ganti sudut pandang: pilih "Anda" untuk instruksi pengguna dan "sistem" untuk perilaku otomatis. Pasif dengan di- hanya boleh bila pelaku tidak diketahui dalam teks deskriptif.
 
-5. Modal: boleh memakai dapat, bisa, akan, harus, wajib. Jangan memakai sebaiknya, semestinya, mungkin, barangkali, kiranya. "Seharusnya" yang wajib menjadi "harus". Yang opsional, hapus.
+5. Modal: boleh memakai dapat, bisa, akan, harus, wajib. Jangan memakai sebaiknya, semestinya, seharusnya, harusnya, mungkin, barangkali, kiranya, sekiranya, seandainya. "Seharusnya" yang wajib menjadi "harus". Yang opsional, hapus. Tanpa pagar cukup, relatif, umumnya, biasanya bila menyamarkan fakta.
 
 6. Gunakan tata bahasa lengkap EYD V. Tanpa singkatan informal: jangan pakai yg, dgn, spt, bgt, nggak, gak. Tulis "di mana", "ke mana", "bagaimana" secara terpisah. Pertahankan "yang", "bahwa", "tersebut". Tulis kalimat pendek, bukan gaya telegram.
 
 7. Tanpa titik koma dan tanpa em-dash. Tulis dua kalimat, atau sebutkan hubungannya dengan karena, tetapi, contohnya.
 
-8. Satu kata, satu makna, untuk seluruh dokumen. Gunakan `pastikan` untuk periksa, verifikasi, konfirmasi, validasi, cek. Gunakan `konfigurasi` untuk `config`, pengaturan, setelan, opsi. Gunakan `gunakan` untuk pakai, manfaatkan. Pecah rantai frasa benda lebih dari tiga kata dengan preposisi ("nilai batas waktu untuk kolam koneksi"). Daftar lengkap di `references/kata-ganti.md` dan baku di `references/kata-baku.md`.
+8. Satu kata, satu makna, untuk seluruh dokumen. Gunakan `pastikan` untuk periksa, verifikasi, konfirmasi, validasi, cek. Gunakan `konfigurasi` untuk `config`, pengaturan, setelan, opsi. Gunakan `gunakan` untuk pakai, manfaatkan. Gunakan `mulai` untuk mengawali, memulai, inisiasi. Pecah rantai frasa benda lebih dari tiga kata dengan preposisi ("nilai batas waktu untuk kolam koneksi"). Daftar lengkap di `references/kata-ganti.md` dan baku di `references/kata-baku.md`.
 
 9. Beri pembaca setiap istilah dan setiap fakta sebelum langkah yang membutuhkannya. Definisikan istilah konsep saat pertama dipakai, di bawah sepuluh kata, satu per kalimat. Jangan definisikan nama produk, nama standar (Postgres, S3, HTTP), atau alat yang dibahas dokumen. Sebutkan juga host, flag, atau langkah sebelumnya yang dipakai perintah. "Restart service" menjadi "Mulai ulang layanan `sync` pada host yang menjalankan tugas."
 
 10. Nyatakan fakta, bukan pentingnya fakta. Hapus kata tanpa fakta: secara sederhana, dengan mudah, mulus, kuat, tangguh, canggih, manfaatkan, komprehensif, penting untuk dicatat, dalam rangka untuk, tidak hanya X melainkan Y. Tanpa tiga serangkai hiasan. Tanpa "sebagai kesimpulan".
 
-11. Gunakan format hanya bila membawa struktur. Tanpa bold pembuka, tanpa bold sebagai penekanan, tanpa emoji, tanpa heading yang hanya menaungi dua kalimat. Daftar vertikal untuk tiga item sejajar atau lebih: akhiri pengantar dengan titik dua, awali huruf kapital, satu instruksi per item.
+11. Gunakan format hanya bila membawa struktur. Tanpa bold pembuka, tanpa bold sebagai penekanan, tanpa emoji, tanpa heading yang hanya menaungi satu atau dua kalimat. Daftar vertikal untuk tiga item sejajar atau lebih: akhiri pengantar dengan titik dua, awali huruf kapital, satu instruksi per item.
 
 12. Peringatan: perintah atau syarat dulu, lalu risiko. "Jangan jalankan ini di produksi. Perintah ini menghapus baris." Gunakan ejaan EYD V.
 

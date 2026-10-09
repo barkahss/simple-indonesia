@@ -24,9 +24,12 @@ sys.path.insert(0, str(ROOT / "evals"))
 
 MAX_HOOK_HITS = 12
 CLAUDE_DIR = ".claude"
-OPENERS = re.compile(r"^\s*(tentu|baik|selesai\.|pertanyaan bagus|hebat|siap\b)", re.I)
+OPENERS = re.compile(
+    r"^\s*(tentu|baik|selesai\.|pertanyaan bagus|pertanyaan yang bagus|hebat|siap\b)",
+    re.I,
+)
 CLOSERS = re.compile(
-    r"(semoga membantu|beri tahu saya|beritahu saya|jangan ragu|ada pertanyaan lain)",
+    r"(semoga membantu|beri tahu saya|beritahu saya|jangan ragu|ada pertanyaan lain|let me know|hope this helps)",
     re.I,
 )
 
@@ -45,13 +48,13 @@ def absolute(path, cwd=None):
 
 
 def excluded(target):
-    config_dirs = {absolute(os.environ.get("CLAUDE_CONFIG_DIR") or f"~/{CLAUDE_DIR}")}
-    raw = os.environ.get("SIMPLE_INDONESIA_LINT_EXCLUDE", "").split(os.pathsep)
-    patterns = [os.path.expanduser(p) for p in raw if p]
     form = pathlib.Path(os.path.normpath(target))
     if CLAUDE_DIR in form.parts:
         return True
-    if any(fnmatch.fnmatch(str(form), p) for p in patterns):
+    raw = os.environ.get("SIMPLE_INDONESIA_LINT_EXCLUDE", "").split(os.pathsep)
+    patterns = [os.path.expanduser(p).replace("\\", "/") for p in raw if p]
+    text = str(form).replace("\\", "/")
+    if any(fnmatch.fnmatch(text, p) for p in patterns):
         return True
     return False
 
