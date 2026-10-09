@@ -1,6 +1,6 @@
 # Changelog — simple-indonesia
 
-## Selanjutnya (belum rilis)
+## v1.6.5
 
 - Selaraskan daftar modal (tambah seharusnya, harusnya, sekiranya, seandainya), aturan heading satu atau dua kalimat, larangan nominalisasi di Plain, kunci sinonim `mulai`, sudut pandang Anda/sistem, dan larangan pagar tanpa fakta.
 - Perbaiki contoh runbook (syarat di awal), contoh rilis (tanpa kata `hal`), contoh status-page (tanpa Inggris telanjang), dan aturan batas pemasaran.
